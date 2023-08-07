@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="loginSignup">
+      <img class="main-image desktop-main-image" src="../../assets/Images/searchimage(2).jpg" />
+      <div class="mobile-image">
+        <img class="main-image-mobile" src="../../assets/Images/mobileimage.png" />
+      </div>
+      <div class="scroll-wrapper">
+      <div class="container-login">
+        <div class="login-signup-container">
+          <div class="btn-wrapper">
+            <button class="btn" (click)="goToLogin()">Login</button>
+            <button class="btn active" id="signupBtn">Sign Up</button>
+          </div>
+          <div class="form-container">
+            <div class="login-form">
+              <form>
+                <div class="image-upload">
+                    <div class="circle-container">
+                        <img src="../../assets/Images/avatar.png" id="previewImage" alt="Preview">
+                    </div>
+                    <input type="file" id="imageInput" accept="image/*">
+                    <label for="imageInput" id="uploadLabel"><img src="../../assets/Images/icons8-camera-30.png" >Choose an image</label>
+                </div>
+                <img class="username-img" src="../../assets/Images/icons8-user-30.png" />
+                <input type="text" placeholder="Enter your username" />
+
+                <img class="emailSignup-img" src="../../assets/Images/icons8-email-30.png" />
+                <input type="email" placeholder="Enter your email" />
+
+                <img class="phone-img" src="../../assets/Images/icons8-phone-30.png" />
+                <input type="text" placeholder="Enter your phone number" />
+                
+                <div class="dropdown">
+                    <select id="communityDropdown">
+                        <option value="" disabled selected>Select a Community</option>
+                        <option value="community1">Community 1</option>
+                        <option value="community2">Community 2</option>
+                        <option value="community3">Community 3</option>
+                        <option value="community4">Community 4</option>
+                    </select>
+                </div>
+
+                <img class="Signuppass-img" src="../../assets/Images/icons8-password-30.png" />
+                <input
+                  type="password"
+                  id="passwordField"
+                  placeholder="Enter your password"
+                />
+                <button id="togglePassword" class="signupToggle">
+                  <img
+                    src="../../assets/Images/icons8-invisible-30.png"
+                    alt="Show Password"
+                    id="toggleImage"
+                  />
+                </button>
+                <button type="submit" class="loginbtn">Signup</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+  </body>
+</html>
