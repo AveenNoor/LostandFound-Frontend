@@ -145,7 +145,7 @@ body {
   .pass-img {
     width: 5%;
     position: absolute;
-    top: 39%;
+    top: 40%;
     left: 3%;
   }
   .emailSignup-img {
@@ -199,12 +199,13 @@ body {
   #togglePassword {
     position: absolute;
     right: 0;
-    top: 48%;
+    top: 46%;
     transform: translateY(-50%);
     background-color: transparent;
     border: none;
     cursor: pointer;
   }
+  
   .signupToggle {
     top: 80% !important;
   }

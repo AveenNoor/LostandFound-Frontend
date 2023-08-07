@@ -96,14 +96,36 @@ body {
   .form-container {
     width: 100%;
     display: flex;
+    height: 400px;
     transition: transform 0.3s ease-in-out;
     text-align: left;
+    overflow-y:scroll;
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: white white; /* For Firefox */
+
+  }
+    /* For WebKit based browsers (Chrome, Safari) */
+  .form-container::-webkit-scrollbar {
+    width: 8px; /* Adjust as needed */
+    height: 5px;
+    color: white;
   }
 
   .form-container::-webkit-scrollbar-thumb {
-    background-color: transparent; /* Make the thumb transparent */
-
+    background-color: white; /* Make the thumb transparent */
   }
+
+  /* For Edge and Internet Explorer */
+  @supports (-ms-overflow-style: none) {
+    .form-container {
+      -ms-overflow-style: none; /* Hide the scrollbar for Edge and IE */
+    }
+    .form-container::-webkit-scrollbar {
+      display: none; /* Hide the scrollbar for WebKit browsers in Edge */
+    }
+  }
+
+
   .login-form {
     flex: 1;
     padding-bottom: 20px;
@@ -229,6 +251,7 @@ body {
     text-align: center;
     display: flex;
     justify-content: center;
+    margin-top: 10px;
   }
   
   #imageInput {
@@ -326,7 +349,7 @@ body {
     }
     .login-signup-container {
       position: relative;
-      top: 0px;
+      top: 30px;
       left: 0px;
       width: 100%;
       height: 100%;

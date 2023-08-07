@@ -10,19 +10,19 @@ import {FormGroup, FormControl,Validators} from '@angular/forms';
 })
 export class LoginPageComponent {
 
-    //Login Form
-    loginForm: FormGroup = new FormGroup({
-      'userEmail': new FormControl('',[Validators.required,Validators.email]),
-      'userPassword': new FormControl('',[Validators.required,Validators.minLength(5)])
-    })
-  
-    get userEmailF(){
-      return this.loginForm.get('userEmail');
-    }
-  
-    get userPasswordF(){
-      return this.loginForm.get('userPassword');
-    }
+  //Login Form
+  loginForm: FormGroup = new FormGroup({
+    'userEmail': new FormControl('',[Validators.required,Validators.email]),
+    'userPassword': new FormControl('',[Validators.required,Validators.minLength(5)])
+  })
+
+  get userEmailF(){
+    return this.loginForm.get('userEmail');
+  }
+
+  get userPasswordF(){
+    return this.loginForm.get('userPassword');
+  }
 
   //Constructor
   constructor(private router:Router){}
