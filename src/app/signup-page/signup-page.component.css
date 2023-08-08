@@ -170,14 +170,21 @@ body {
   .emailSignup-img {
     width: 5%;
     position: absolute;
-    top: 37.5%;
+    top: 36.5%;
     left: 3%;
   }
 
   .Signuppass-img {
     width: 5%;
     position: absolute;
-    top: 77%;
+    top: 58%;
+    left: 3%;
+  }
+  
+  .Signuppassconfirm-img{
+    width: 5%;
+    position: absolute;
+    top: 69%;
     left: 3%;
   }
   .username-img {
@@ -189,7 +196,7 @@ body {
   .phone-img {
     width: 5%;
     position: absolute;
-    top: 49%;
+    top: 47%;
     left: 3%;
   }
   
@@ -226,7 +233,11 @@ body {
     cursor: pointer;
   }
   .signupToggle {
-    top: 75% !important;
+    top: 60% !important;
+  }
+
+  .signupToggleconfirm {
+    top: 71% !important;
   }
   #togglePassword img {
     width: 66%;
@@ -288,6 +299,7 @@ body {
   
   .dropdown {
     display: inline-block;
+    font-family: "Barlow", sans-serif;
   }
   
   #communityDropdown {
@@ -503,9 +515,13 @@ body {
       left: 3%;
     }
     #togglePassword {
-      top: 47%;
+      top: 35%;
     }
-    #togglePassword img {
+    #toggleImage {
+
+      width: 73%;
+    }
+    #toggleImageConfirm{
       width: 73%;
     }
     .loginbtn {
@@ -522,7 +538,7 @@ body {
     .username-img {
       width: 7%;
       position: absolute;
-      top: 20.5%;
+      top: 20%;
       left: 3%;
     }
     .signup-form {
@@ -531,19 +547,25 @@ body {
     .emailSignup-img {
       width: 7%;
       position: absolute;
-      top: 34%;
+      top: 32%;
       left: 3%;
     }
     .phone-img {
       width: 7%;
       position: absolute;
-      top: 48%;
+      top: 43.5%;
       left: 3%;
     }
     .Signuppass-img {
       width: 7%;
       position: absolute;
-      top: 75%;
+      top: 55.5%;
+      left: 3%;
+    }
+    .Signuppassconfirm-img{
+      width: 7%;
+      position: absolute;
+      top: 67%;
       left: 3%;
     }
     #communityDropdown {

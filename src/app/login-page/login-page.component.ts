@@ -10,6 +10,10 @@ import {FormGroup, FormControl,Validators} from '@angular/forms';
 })
 export class LoginPageComponent {
 
+  //Properties
+  isPasswordVisible : boolean = false;
+  isEmailCorrect : boolean = true;
+
   //Login Form
   loginForm: FormGroup = new FormGroup({
     'userEmail': new FormControl('',[Validators.required,Validators.email]),
@@ -25,7 +29,14 @@ export class LoginPageComponent {
   }
 
   //Constructor
-  constructor(private router:Router){}
+  constructor(private router:Router){
+    this.loginForm.get('userEmailF')?.valueChanges.subscribe(newValue => {
+      if(this.loginForm.invalid){
+        this.isEmailCorrect=false;
+        console.log('Form is',newValue);
+      }
+    });
+  }
 
   //Navigate to signup on clicking Sign Up button
   goToSignup():void{
@@ -44,4 +55,18 @@ export class LoginPageComponent {
     }
   }
 
+   //View password upon clickling the toggle image
+   viewPassword():void{
+    this.isPasswordVisible = !this.isPasswordVisible;
+  }
+
+  //Validator for email
+  onEmailNgIfChange(value: any) {
+    console.log(value);
+    if (value) {
+      this.isEmailCorrect = true;
+    } else {
+      this.isEmailCorrect = false;
+    }
+  }
 }

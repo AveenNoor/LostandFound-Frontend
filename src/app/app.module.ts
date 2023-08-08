@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 //Libarries
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskModule} from 'ngx-mask/lib/ngx-mask.module';
 
 //Components
 import { AppComponent } from './app.component';
@@ -19,7 +20,8 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    // NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

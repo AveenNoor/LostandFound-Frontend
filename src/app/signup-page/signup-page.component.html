@@ -20,7 +20,7 @@
           </div>
           <div class="form-container">
             <div class="login-form">
-              <form>
+              <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
                 <div class="image-upload">
                     <div class="circle-container">
                         <img src="../../assets/Images/avatar.png" id="previewImage" alt="Preview">
@@ -29,37 +29,55 @@
                     <label for="imageInput" id="uploadLabel"><img src="../../assets/Images/icons8-camera-30.png" >Choose an image</label>
                 </div>
                 <img class="username-img" src="../../assets/Images/icons8-user-30.png" />
-                <input type="text" placeholder="Enter your username" />
+                <input type="text" placeholder="Enter your username" [style.border-color]="userNameF?.invalid && userNameF?.touched ? 'red' : ''" formControlName="userName" />
 
                 <img class="emailSignup-img" src="../../assets/Images/icons8-email-30.png" />
-                <input type="email" placeholder="Enter your email" />
+                <input type="email" placeholder="Enter your email" [style.border-color]="userEmailF?.invalid && userEmailF?.touched ? 'red' : ''"formControlName="userEmail"/>
 
                 <img class="phone-img" src="../../assets/Images/icons8-phone-30.png" />
-                <input type="text" placeholder="Enter your phone number" />
-                
-                <div class="dropdown">
-                    <select id="communityDropdown">
-                        <option value="" disabled selected>Select a Community</option>
-                        <option value="community1">Community 1</option>
-                        <option value="community2">Community 2</option>
-                        <option value="community3">Community 3</option>
-                        <option value="community4">Community 4</option>
-                    </select>
-                </div>
-
+                <input type='text' mask='(000) 000-0000'  placeholder="xx-xxx-xxxxxxx" [style.border-color]="userPhoneF?.invalid && userPhoneF?.touched ? 'red' : ''" formControlName="userPhone" />
+          
                 <img class="Signuppass-img" src="../../assets/Images/icons8-password-30.png" />
                 <input
                   type="password"
                   id="passwordField"
                   placeholder="Enter your password"
+                  formControlName="userPassword"
+                  [style.border-color]="userPasswordF?.invalid && userPasswordF?.touched ? 'red' : ''"
+                  type="{{ isPasswordVisible ? 'text' : 'password' }}"
                 />
-                <button id="togglePassword" class="signupToggle">
+                <button id="togglePassword" class="signupToggle" (click)="viewPassword()">
                   <img
-                    src="../../assets/Images/icons8-invisible-30.png"
+                  [src]="isPasswordVisible ? '../../assets/Images/icons8-visible-30.png' : '../../assets/Images/icons8-invisible-30.png'"
+                  alt="Toggle Password Visibility"
+                  id="toggleImage"
+                />
+                </button>
+                <img class="Signuppassconfirm-img" src="../../assets/Images/icons8-password-30.png" />
+                <input
+                  type="password"
+                  id="passwordFieldconfirm"
+                  placeholder="Confirm password"
+                  [style.border-color]="userPasswordConfirmF?.invalid && userPasswordConfirmF?.touched ? 'red' : ''"
+                  type="{{ isPasswordVisibleConfirm ? 'text' : 'password' }}"
+                  formControlName="userPasswordConfirm"
+                />
+                <button id="togglePassword" class="signupToggleconfirm" (click)="viewPasswordConfirm()">
+                  <img
+                    [src]="isPasswordVisibleConfirm ? '../../assets/Images/icons8-visible-30.png' : '../../assets/Images/icons8-invisible-30.png'"
                     alt="Show Password"
-                    id="toggleImage"
+                    id="toggleImageConfirm"
                   />
                 </button>
+                <div class="dropdown">
+                    <select id="communityDropdown" formControlName="userCommunity">
+                        <option value="" disabled selected>Select a Location</option>
+                        <option value="community1">Islamabad</option>
+                        <option value="community2">Lahore</option>
+                        <option value="community3">Peshawar</option>
+                        <option value="community4">Karachi</option>
+                    </select>
+                </div>
                 <button type="submit" class="loginbtn">Signup</button>
               </form>
             </div>
