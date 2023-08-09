@@ -14,21 +14,13 @@
       <div class="scroll-wrapper">
       <div class="container-login">
         <div class="login-signup-container">
-          <div class="btn-wrapper">
-            <button class="btn" (click)="goToLogin()">Login</button>
-            <button class="btn active" id="signupBtn">Sign Up</button>
-          </div>
           <div class="">
             <h1 class="logo-style">Lost & Found</h1>
           </div>
           <div class="form-container">
             <div class="login-form">
-              <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-                <img class="phone-img" src="../../assets/Images/icons8-phone-30.png" />
-                <input type='text' placeholder="xx-xxx-xxxxxxx" [style.border-color]="userPhoneF?.invalid && userPhoneF?.touched ? 'red' : ''" formControlName="userPhone" />        
-                <button type="submit" class="loginbtn" (click)="getOTP()">Signup</button>
-                <div id="sign-in-button"></div>
-              </form>
+                <ng-otp-input (onInputChange)="onOtpEntry($event)" [config]="config"></ng-otp-input>
+                <button class="loginbtn" (click)="handleClick()">Verify</button>
             </div>
           </div>
         </div>
