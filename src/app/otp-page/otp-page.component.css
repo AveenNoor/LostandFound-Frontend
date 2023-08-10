@@ -71,7 +71,35 @@ body {
     font-weight: 600;
     line-height: normal;
   }
+
+  /* #otpboxes {
+    display: flex;  } */
   
+  /* Adjust the individual OTP digit input styles */
+  /* ng-otp-input-item {
+    width: 10px;
+    height: 10px;
+    font-size: 8px;
+    text-align: justify;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin: 0 5px;
+    padding: 10px;
+    box-sizing: border-box;
+  } */
+  
+  /* Style for the OTP input when focused */
+  /* .ng-otp-input-item:focus {
+    border-color: #007bff;
+    outline: none;
+  } */
+  
+  /* Style for the OTP input when a value is entered */
+  /* .ng-otp-input-item:not(:placeholder-shown) {
+    border-color: #28a745;
+  }
+   */
+
   #loginBtn {
     border-radius: 0.75rem 0rem 0rem 0.75rem;
   }
@@ -205,10 +233,6 @@ body {
   .password-container {
     position: relative;
   }
-  /* 
-  #passwordField {
-    padding: 10px;
-  } */
   
   #togglePassword {
     position: absolute;
@@ -334,7 +358,7 @@ body {
   .mobile-image {
     display: none;
   }
-  
+
   @media only screen and (min-width: 750px) and (max-width: 1024px) {
     .desktop-main-image {
       display: none;
@@ -363,6 +387,8 @@ body {
     .login-signup-container h1 {
       font-size: 5.719vw;
     }
+
+    
     .login-signup-container {
       padding: 0px;
       margin-top: 16px;
@@ -440,6 +466,9 @@ body {
     #communityDropdown {
       font-size: 22px;
       padding: 3vw;
+    }
+    #otpboxes{
+      text-align: justify;
     }
   }
   @media only screen and (min-width: 250px) and (max-width: 750px) {

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit{
 
   //Properties
-  title = 'ProjectV1';
+  title:string = 'ProjectV1';
 
   //Constructor
   constructor(private router:Router){
@@ -17,6 +17,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.router.navigate(['/']);
+    // this.router.navigate(['/otppage']);
   }
 
 

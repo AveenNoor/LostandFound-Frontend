@@ -23,9 +23,16 @@
           <div class="form-container">
             <div class="login-form">
               <form [formGroup]="loginForm" (ngSubmit)="validateLogin()">
-                <img class="email-img" src="../../assets/Images/icons8-email-30.png" />
-
-                <input type="email" placeholder="Enter your email" [style.border-color]="userEmailF?.invalid && userEmailF?.touched ? 'red' : ''" formControlName="userEmail"/>
+                <img class="email-img" src="../../assets/Images/icons8-phone-30.png" />
+                <!-- <span class="phone-prefix">+92</span> -->
+                <input 
+                  type="text" 
+                  placeholder=" x xxx xxxxxxx" 
+                  (specialCharacters)="['+']"
+                  placeholder="+92 xxx xxxxxxx" 
+                  mask="+00 000 0000000" 
+                  [style.border-color]="userPhoneF?.invalid && userPhoneF?.touched ? 'red' : ''" 
+                  formControlName="userPhone"/>
                 <img class="pass-img" src="../../assets/Images/icons8-password-30.png" />
                 <input 
                   type="password" 

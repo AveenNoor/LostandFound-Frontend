@@ -19,13 +19,34 @@
             <button class="btn active" id="signupBtn">Sign Up</button>
           </div>
           <div class="">
-            <h1 class="logo-style">Lost & Found</h1>
+            <h1 class="logo-style">Sign up with Us!</h1>
           </div>
           <div class="form-container">
             <div class="login-form">
               <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
                 <img class="phone-img" src="../../assets/Images/icons8-phone-30.png" />
-                <input type='text' placeholder="xx-xxx-xxxxxxx" [style.border-color]="userPhoneF?.invalid && userPhoneF?.touched ? 'red' : ''" formControlName="userPhone" />        
+                <input 
+                  type='text' 
+                  (specialCharacters)="['+']"
+                  placeholder="+92 xxx xxxxxxx" 
+                  mask="+00 000 0000000" 
+                  [style.border-color]="userPhoneF?.invalid && userPhoneF?.touched ? 'red' : ''" 
+                  formControlName="userPhone" />
+                  <img class="Signuppass-img" src="../../assets/Images/icons8-password-30.png" />
+                  <input 
+                    type="password" 
+                    id="passwordField" 
+                    placeholder="Enter your Password" 
+                    formControlName="userPassword"
+                    [style.border-color]="userPasswordF?.invalid && userPasswordF?.touched ? 'red' : ''"
+                    type="{{ isPasswordVisible? 'text' : 'password' }}"/>       
+                  <button id="togglePassword" (click)="viewPassword()">
+                    <img
+                    [src]="isPasswordVisible ? '../../assets/Images/icons8-visible-30.png' : '../../assets/Images/icons8-invisible-30.png'"
+                    alt="Show Password"
+                    id="toggleImage"
+                    />
+                  </button>        
                 <button type="submit" class="loginbtn" (click)="getOTP()">Signup</button>
                 <div id="sign-in-button"></div>
               </form>

@@ -112,7 +112,6 @@ body {
   }
 }
 
-
 .login-form {
   flex: 1;
   padding-bottom: 20px;
@@ -151,7 +150,7 @@ body {
 .pass-img {
   width: 5%;
   position: absolute;
-  top: 5%;
+  top: 40%;
   left: 3%;
 }
 .emailSignup-img {
@@ -164,7 +163,7 @@ body {
 .Signuppass-img {
   width: 5%;
   position: absolute;
-  top: 58%;
+  top: 38%;
   left: 3%;
 }
 
@@ -183,7 +182,7 @@ body {
 .phone-img {
   width: 5%;
   position: absolute;
-  top: 13%;
+  top: 8%;
   left: 3%;
 }
 
@@ -213,7 +212,7 @@ body {
 #togglePassword {
   position: absolute;
   right: 0;
-  top: 48%;
+  top: 44%;
   transform: translateY(-50%);
   background-color: transparent;
   border: none;

@@ -42,6 +42,8 @@ export class OtpPageComponent implements OnInit{
     var credentials = firebase.auth.PhoneAuthProvider.credential(this.verify,this.otp);
     firebase.auth().signInWithCredential(credentials).then((response)=>{
       console.log(response);
+    }).catch((error)=>{
+      alert(error);
     })
   }
 }

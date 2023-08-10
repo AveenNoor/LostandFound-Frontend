@@ -19,7 +19,9 @@
           </div>
           <div class="form-container">
             <div class="login-form">
-                <ng-otp-input (onInputChange)="onOtpEntry($event)" [config]="config"></ng-otp-input>
+              <div>
+                <ng-otp-input (onInputChange)="onOtpEntry($event)" [config]="config" style="text-align: justify;"></ng-otp-input>
+              </div>
                 <button class="loginbtn" (click)="handleClick()">Verify</button>
             </div>
           </div>

@@ -24,14 +24,23 @@ export class SignupPageComponent implements OnInit {
   //Properties
   phoneNumber : any;
   reCaptchaVerifier : any;
+  isPasswordVisible : boolean = false;
+  isPhoneCorrect : boolean = true;
  
   //SignUp Form
   signupForm: FormGroup = new FormGroup ({
     userPhone:new FormControl('',[Validators.required,Validators.pattern(/^\+92\d{3}\d{7}$/)]),
+    'userPassword': new FormControl('',[Validators.required,Validators.minLength(5)])
+    //add a new element that is password and send the values of this form to the profile page
+    //and then donot take input of profile from uer again instead whenever these two are needed again just take from the service
   });
 
   get userPhoneF(){
     return this.signupForm.get('userPhone');
+  }
+
+  get userPasswordF(){
+    return this.signupForm.get('userPassword');
   }
 
   //Constructor
@@ -52,6 +61,11 @@ export class SignupPageComponent implements OnInit {
     console.log('Form Submitted...')
   }
 
+  //View password upon clickling the toggle image
+  viewPassword():void{
+    this.isPasswordVisible = !this.isPasswordVisible;
+  }
+
   //Fucntion to generate an OTP and then navigate to otp page
    getOTP(){
     var phoneNumber=this.userPhoneF?.value;
@@ -64,25 +78,40 @@ export class SignupPageComponent implements OnInit {
     console.log(this.reCaptchaVerifier);
     console.log(phoneNumber);
     firebase
-      .auth()
-      .signInWithPhoneNumber(phoneNumber, this.reCaptchaVerifier)
-      .then((confirmationResult) => {
-        console.log(confirmationResult);
-        localStorage.setItem(
-          'verificationId',
-          JSON.stringify(confirmationResult.verificationId)
-        );
-        this.router.navigate(['/otppage']);
-      })
-      .catch((error) => {
-        console.log(error.message);
-        alert(error.message);
-        setTimeout(() => {
-          window.location.reload();
-        }, 5000);
-      });
-  }
+    .auth()
+    .signInWithPhoneNumber(phoneNumber, this.reCaptchaVerifier)
+    .then((confirmationResult) => {
+      console.log(confirmationResult);
+      localStorage.setItem(
+        'verificationId',
+        JSON.stringify(confirmationResult.verificationId)
+      );
+      this.router.navigate(['/otppage']);
+    })
+    .catch((error) => {
+      console.log(error.message);
+      alert(error.message);
+      setTimeout(() => {
+        window.location.reload();
+      }, 5000);
+    });
+  } 
 
+   //Phone number country code
+   setupPhoneInput(): void {
+    const userPhoneF = this.signupForm.get('userPhone');
+    
+    userPhoneF?.valueChanges.subscribe((value: string) => {
+      if (value && value.startsWith('0')) {
+        const phoneNumber = '+92' + value.slice(1);
+        userPhoneF.setValue(phoneNumber, { emitEvent: false });
+      }
+      else if(value && value.startsWith('+92')){}
+      else if(value){
+        alert('Invalid Number entered! Please start with 0 or +92 as per your country code.');
+      }
+    });
+  }
 
 }
 

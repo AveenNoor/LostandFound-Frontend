@@ -8,6 +8,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { NgOtpInputModule } from 'ng-otp-input';
+import {NgxMaskModule} from 'ngx-mask';
 
 //Components
 import { AppComponent } from './app.component';
@@ -29,7 +30,8 @@ import { OtpPageComponent } from './otp-page/otp-page.component';
     AngularFireModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    NgOtpInputModule
+    NgOtpInputModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
