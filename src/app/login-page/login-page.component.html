@@ -24,7 +24,6 @@
             <div class="login-form">
               <form [formGroup]="loginForm" (ngSubmit)="validateLogin()">
                 <img class="email-img" src="../../assets/Images/icons8-phone-30.png" />
-                <!-- <span class="phone-prefix">+92</span> -->
                 <input 
                   type="text" 
                   placeholder=" x xxx xxxxxxx" 
@@ -48,6 +47,12 @@
                   id="toggleImage"
                   />
                 </button>
+                <div class="extraoptions">
+                  <label class="remembermebtn">
+                    <input type="checkbox" name="rememberMe" class="rememberMebox" > Remember Me
+                  </label>
+                  <button class="fogotbtn">Forgot Password?</button>
+                </div>
                 <button type="submit" class="loginbtn" >Login</button>
               </form>
             </div>

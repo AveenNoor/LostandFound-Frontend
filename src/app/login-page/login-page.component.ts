@@ -14,11 +14,11 @@ export class LoginPageComponent implements OnInit{
   isPasswordVisible : boolean = false;
   isPhoneCorrect : boolean = true;
   countryCode:string ='+92';
-  phoneBorders: boolean = true;
+  rememberMe: boolean = false;
 
   //Login Form
   loginForm: FormGroup = new FormGroup({
-    'userPhone':new FormControl('',[Validators.required,Validators.pattern(/^\+92\d{3}\d{7}$/)]),
+    'userPhone':new FormControl('',[Validators.required]),
     'userPassword': new FormControl('',[Validators.required,Validators.minLength(5)])
   })
 
@@ -38,6 +38,14 @@ export class LoginPageComponent implements OnInit{
         console.log('Form is',newValue);
       }
     });
+
+    //Remember me option implementation
+    // Check local storage for remembered username
+    const rememberedUsername = localStorage.getItem('rememberedUsername');
+    if (rememberedUsername) {
+      this.loginForm.get('username')?.setValue(rememberedUsername);
+      this.rememberMe = true;
+    }
   }
 
   ngOnInit(): void {
@@ -86,9 +94,22 @@ export class LoginPageComponent implements OnInit{
         userPhoneF.setValue(phoneNumber, { emitEvent: false });
       }
       else if(value && value.startsWith('+92')){}
-      else if(value){
-        alert('Invalid Number entered! Please start with 0 or +92 as per your country code.');
-      }
+      // else if(value){
+      //   alert('Invalid Number entered! Please start with 0 or +92 as per your country code.');
+      // }
     });
+  }
+
+
+  //Remember me option code
+  login() {
+    const userphonenumber = this.loginForm.get('userPhone')?.value;
+    // Your authentication logic here
+    // If "Remember Me" is checked, store the username in local storage
+    if (this.rememberMe) {
+      localStorage.setItem('rememberedUsername', userphonenumber);
+    } else {
+      localStorage.removeItem('rememberedUsername');
+    }
   }
 }

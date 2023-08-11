@@ -501,14 +501,14 @@ body {
     left: 3%;
   }
   #togglePassword {
-    top: 35%;
+    top: 45%;
   }
   #toggleImage {
 
-    width: 73%;
+    width: 80%;
   }
   #toggleImageConfirm{
-    width: 73%;
+    width: 80%;
   }
   .loginbtn {
     font-size: 20px;
@@ -539,13 +539,13 @@ body {
   .phone-img {
     width: 7%;
     position: absolute;
-    top: 10.5%;
+    top: 6%;
     left: 3%;
   }
   .Signuppass-img {
     width: 7%;
     position: absolute;
-    top: 55.5%;
+    top: 37%;
     left: 3%;
   }
   .Signuppassconfirm-img{

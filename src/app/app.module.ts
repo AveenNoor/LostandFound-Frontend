@@ -9,19 +9,22 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { NgOtpInputModule } from 'ng-otp-input';
 import {NgxMaskModule} from 'ngx-mask';
+import { AuthService } from './auth.service';
 
 //Components
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { OtpPageComponent } from './otp-page/otp-page.component';
+import { ForgotPasswordComponent } from './ForgotPassword/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     SignupPageComponent,
-    OtpPageComponent
+    OtpPageComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +34,9 @@ import { OtpPageComponent } from './otp-page/otp-page.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgOtpInputModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

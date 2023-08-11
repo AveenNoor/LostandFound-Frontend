@@ -26,29 +26,31 @@ export class SignupPageComponent implements OnInit {
   reCaptchaVerifier : any;
   isPasswordVisible : boolean = false;
   isPhoneCorrect : boolean = true;
+  input :any ;
  
   //SignUp Form
   signupForm: FormGroup = new FormGroup ({
-    userPhone:new FormControl('',[Validators.required,Validators.pattern(/^\+92\d{3}\d{7}$/)]),
-    'userPassword': new FormControl('',[Validators.required,Validators.minLength(5)])
-    //add a new element that is password and send the values of this form to the profile page
-    //and then donot take input of profile from uer again instead whenever these two are needed again just take from the service
+    userPhone:new FormControl('',[Validators.required]),
+    // 'userPassword': new FormControl('',[Validators.required,Validators.minLength(5)])
+
   });
 
   get userPhoneF(){
     return this.signupForm.get('userPhone');
   }
 
-  get userPasswordF(){
-    return this.signupForm.get('userPassword');
-  }
+  // get userPasswordF(){
+  //   return this.signupForm.get('userPassword');
+  // }
 
   //Constructor
   constructor(private router:Router){}
 
   //Oninit function
   ngOnInit(){
-      firebase.initializeApp(config)
+      firebase.initializeApp(config);
+      this.setupPhoneInput();
+      this.applyPhoneNumberMask();
   }
 
   //Function to navogate to login page on button click
@@ -98,7 +100,7 @@ export class SignupPageComponent implements OnInit {
   } 
 
    //Phone number country code
-   setupPhoneInput(): void {
+  setupPhoneInput(): void {
     const userPhoneF = this.signupForm.get('userPhone');
     
     userPhoneF?.valueChanges.subscribe((value: string) => {
@@ -107,11 +109,30 @@ export class SignupPageComponent implements OnInit {
         userPhoneF.setValue(phoneNumber, { emitEvent: false });
       }
       else if(value && value.startsWith('+92')){}
-      else if(value){
-        alert('Invalid Number entered! Please start with 0 or +92 as per your country code.');
-      }
+      // else if(value){
+      //   alert('Invalid Number entered! Please start with 0 or +92 as per your country code.');
+      // }
     });
   }
 
+  //Masking
+  applyPhoneNumberMask() {
+    // Define the mask pattern
+    const maskPattern = "(+99) 999 999999"; // Example pattern: (+92) 123 456789
+    this.input =this.userPhoneF;
+    let result = "";
+    let inputIndex = 0;
+    // Iterate through the mask pattern
+    for (let char of maskPattern) {
+      if (char === "9" && inputIndex < this.input.length) {
+        result += this.input[inputIndex];
+        inputIndex++;
+      } else {
+        result += char;
+      }
+  }
+  this.userPhoneF?.setValue(result, { emitEvent: false });
+  console.log(result);
+}
 }
 
