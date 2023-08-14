@@ -27,27 +27,11 @@
                 <img class="phone-img" src="../../assets/Images/icons8-phone-30.png" />
                 <input 
                   type='text' 
-                  (specialCharacters)="['+']"
-                  placeholder="+92 xxx xxxxxxx" 
-                  
-                  placeholder="xxx xxx xxxxxxx" 
-                  [style.border-color]="userPhoneF?.invalid && userPhoneF?.touched ? 'red' : ''" 
+                  placeholder="+92 xxx xxxxxxx"
+                  maxlength="13"  
+                  [style.border-color]="userPhoneF?.invalid && userPhoneF?.touched && userPhoneF?.hasError('pattern') ? 'red' : ''" 
                   formControlName="userPhone" />
-                  <!-- <img class="Signuppass-img" src="../../assets/Images/icons8-password-30.png" />
-                  <input 
-                    type="password" 
-                    id="passwordField" 
-                    placeholder="Enter your Password" 
-                    formControlName="userPassword"
-                    [style.border-color]="userPasswordF?.invalid && userPasswordF?.touched ? 'red' : ''"
-                    type="{{ isPasswordVisible? 'text' : 'password' }}"/>       
-                  <button id="togglePassword" (click)="viewPassword()">
-                    <img
-                    [src]="isPasswordVisible ? '../../assets/Images/icons8-visible-30.png' : '../../assets/Images/icons8-invisible-30.png'"
-                    alt="Show Password"
-                    id="toggleImage"
-                    />
-                  </button>         -->
+                  <!-- mask="+00 000 0000000" -->
                 <button type="submit" class="loginbtn" (click)="getOTP()">Signup</button>
                 <div id="sign-in-button"></div>
               </form>

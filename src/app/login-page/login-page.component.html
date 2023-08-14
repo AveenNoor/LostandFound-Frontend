@@ -25,35 +25,13 @@
               <form [formGroup]="loginForm" (ngSubmit)="validateLogin()">
                 <img class="email-img" src="../../assets/Images/icons8-phone-30.png" />
                 <input 
-                  type="text" 
-                  placeholder=" x xxx xxxxxxx" 
-                  (specialCharacters)="['+']"
-                  placeholder="+92 xxx xxxxxxx" 
-                  mask="+00 000 0000000" 
-                  [style.border-color]="userPhoneF?.invalid && userPhoneF?.touched ? 'red' : ''" 
+                  type='text' 
+                  placeholder="+92 xxx xxxxxxx"
+                  maxlength="13"
+                  [style.border-color]="userPhoneF?.invalid && userPhoneF?.touched && userPhoneF?.hasError('pattern') ? 'red' : ''" 
                   formControlName="userPhone"/>
-                <img class="pass-img" src="../../assets/Images/icons8-password-30.png" />
-                <input 
-                  type="password" 
-                  id="passwordField" 
-                  placeholder="Enter your Password" 
-                  formControlName="userPassword"
-                  [style.border-color]="userPasswordF?.invalid && userPasswordF?.touched ? 'red' : ''"
-                  type="{{ isPasswordVisible? 'text' : 'password' }}"/>       
-                <button id="togglePassword" (click)="viewPassword()">
-                  <img
-                  [src]="isPasswordVisible ? '../../assets/Images/icons8-visible-30.png' : '../../assets/Images/icons8-invisible-30.png'"
-                  alt="Show Password"
-                  id="toggleImage"
-                  />
-                </button>
-                <div class="extraoptions">
-                  <label class="remembermebtn">
-                    <input type="checkbox" name="rememberMe" class="rememberMebox" > Remember Me
-                  </label>
-                  <button class="fogotbtn">Forgot Password?</button>
-                </div>
-                <button type="submit" class="loginbtn" >Login</button>
+                <button type="submit" class="loginbtn" (click)="getOTP()">Login</button>
+                <div id="sign-in-button"></div>
               </form>
             </div>
           </div>

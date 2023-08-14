@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit{
 
   //Properties
@@ -17,8 +18,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.router.navigate(['/']);
-    // this.router.navigate(['/otppage']);
+    // this.router.navigate(['/otpverifypage']);
   }
-
 
 }

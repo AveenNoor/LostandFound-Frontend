@@ -5,31 +5,31 @@ import 'firebase/firestore'
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-otp-page',
-  templateUrl: './otp-page.component.html',
-  styleUrls: ['./otp-page.component.css']
+  selector: 'app-otpverify-page',
+  templateUrl: './otpverify-page.component.html',
+  styleUrls: ['./otpverify-page.component.css']
 })
-export class OtpPageComponent implements OnInit{
+
+export class OtpverifyPageComponent implements OnInit {
 
   //Properties
-  otp!:string;
-  verify :any;
-  config = {
-    allowNumbersOnly: true,
-    length: 6,
-    isPasswordInput: false,
-    disableAutoFocus: false,
-    placeholder: '',
-    inputStyles: {
-      width: '40px',
-      height: '40px',
-    },
-  };
+   otp!:string;
+   verify :any;
+   config = {
+     allowNumbersOnly: true,
+     length: 6,
+     isPasswordInput: false,
+     disableAutoFocus: false,
+     placeholder: '',
+     inputStyles: {
+       width: '40px',
+       height: '40px',
+     },
+   };
 
-   //Constructor
-   constructor(private router:Router){
-
-   }
+  //Constructor
+  constructor(private router :Router){
+  }
 
   //ngoninit function
   ngOnInit(){
@@ -44,18 +44,15 @@ export class OtpPageComponent implements OnInit{
 
   //Function HandleClick
   handleClick(){
-    var newUserCheck=false;
     var credentials = firebase.auth.PhoneAuthProvider.credential(this.verify,this.otp);
     firebase.auth().signInWithCredential(credentials).then((response)=>{
       console.log(response);
       //checking if the user already exists or is signing up for the first time
       if(response.additionalUserInfo?.isNewUser==true){
-        newUserCheck=true;
-         this.router.navigate(['/myprofilepage']);
+          this.router.navigate(['/myprofilepage']);
       }
       else if(response.additionalUserInfo?.isNewUser==false){
-        newUserCheck=false;
-         this.router.navigate(['/dashboardpage']);
+          this.router.navigate(['/dashboardpage']);
       }
     }).catch((error)=>{
       alert(error);

@@ -30,18 +30,12 @@ export class SignupPageComponent implements OnInit {
  
   //SignUp Form
   signupForm: FormGroup = new FormGroup ({
-    userPhone:new FormControl('',[Validators.required]),
-    // 'userPassword': new FormControl('',[Validators.required,Validators.minLength(5)])
-
+    userPhone:new FormControl('',[Validators.required, Validators.pattern("\\+92\\d{10}")])
   });
 
   get userPhoneF(){
     return this.signupForm.get('userPhone');
   }
-
-  // get userPasswordF(){
-  //   return this.signupForm.get('userPassword');
-  // }
 
   //Constructor
   constructor(private router:Router){}
@@ -88,7 +82,7 @@ export class SignupPageComponent implements OnInit {
         'verificationId',
         JSON.stringify(confirmationResult.verificationId)
       );
-      this.router.navigate(['/otppage']);
+      this.router.navigate(['/otpverifypage']);
     })
     .catch((error) => {
       console.log(error.message);
@@ -99,7 +93,7 @@ export class SignupPageComponent implements OnInit {
     });
   } 
 
-   //Phone number country code
+  //Phone number country code
   setupPhoneInput(): void {
     const userPhoneF = this.signupForm.get('userPhone');
     
@@ -109,16 +103,13 @@ export class SignupPageComponent implements OnInit {
         userPhoneF.setValue(phoneNumber, { emitEvent: false });
       }
       else if(value && value.startsWith('+92')){}
-      // else if(value){
-      //   alert('Invalid Number entered! Please start with 0 or +92 as per your country code.');
-      // }
     });
   }
 
   //Masking
   applyPhoneNumberMask() {
     // Define the mask pattern
-    const maskPattern = "(+99) 999 999999"; // Example pattern: (+92) 123 456789
+    const maskPattern = ""; // Example pattern: (+92) 123 456789
     this.input =this.userPhoneF;
     let result = "";
     let inputIndex = 0;
@@ -130,9 +121,10 @@ export class SignupPageComponent implements OnInit {
       } else {
         result += char;
       }
+    }
+    this.userPhoneF?.setValue(result, { emitEvent: false });
+    console.log(result);
   }
-  this.userPhoneF?.setValue(result, { emitEvent: false });
-  console.log(result);
-}
+
 }
 

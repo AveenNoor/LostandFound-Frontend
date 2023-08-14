@@ -15,14 +15,17 @@
       <div class="container-login">
         <div class="login-signup-container">
           <div class="">
-            <h1 class="logo-style">Lost & Found</h1>
+            <h1 class="logo-style">OTP Authentication</h1>
           </div>
           <div class="form-container">
             <div class="login-form">
               <div>
-                <ng-otp-input (onInputChange)="onOtpEntry($event)" [config]="config" style="text-align: justify;"></ng-otp-input>
+                <ng-otp-input 
+                (onInputChange)="onOtpEntry($event)" [
+                config]="config" 
+                style="text-align: justify;"></ng-otp-input>
               </div>
-                <button class="loginbtn" (click)="handleClick()">Verify</button>
+                <button class="loginbtn" (click)="handleClick()">Verify OTP</button>
             </div>
           </div>
         </div>
