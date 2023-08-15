@@ -10,6 +10,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { NgOtpInputModule } from 'ng-otp-input';
 import {NgxMaskModule} from 'ngx-mask';
 import { AuthService } from './auth.service';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 //Components
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { MyprofilepageComponent } from './myprofilepage/myprofilepage.component'
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { OtpverifyPageComponent } from './otpverify-page/otpverify-page.component';
 import { NewpostPageComponent } from './newpostLost-page/newpost-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { NewpostPageComponent } from './newpostLost-page/newpost-page.component'
     AngularFireAuthModule,
     NgOtpInputModule,
     NgxMaskModule.forRoot(),
+    BrowserAnimationsModule,
+    MatGridListModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

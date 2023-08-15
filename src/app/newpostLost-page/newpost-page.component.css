@@ -1,8 +1,18 @@
-body {
-    margin: 0px;
-    padding: 0px;
-    background: rgba(231, 244, 252, 0.64);
-  }
+/* Assuming this is your global stylesheet or component's specific stylesheet */
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.page-wrapper {
+  min-height: 100%;
+  background-color: rgba(231, 244, 252, 0.64);
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
   h1,
   h2,
   h3,
@@ -248,10 +258,13 @@ body {
     display: flex;
     gap: 1vw;
     align-items: center;
-    margin-top: 2vw;;
+    margin-top: 2vw;
+  }
+  .type-space{
+    margin-right: 0.7vw ;
   }
   #communityDropdown {
-    width: 50%;
+    width:65.5%;
     font-size: 16px;
     border-radius: 0.875rem;
     border: 1px solid #c3c3c3;
@@ -314,10 +327,16 @@ body {
     line-height: 138.5%; /* 1.90438rem */
     letter-spacing: 0.04813rem;
   }
-  .description-div{
+  .description-div {
     height: 120px;
-    width: 70% !important;
+    width: 90% !important;
+    text-align: left; /* Align text to the left */
+    vertical-align: top; /* Align text to the top */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to the top within the div */
   }
+  
   .location-btn{
     width: 30%;
     border-radius: 0.5625rem;
@@ -374,3 +393,41 @@ body {
     border: none;
     margin-left: -3px;
   }
+  .uploaded-img{
+    height: 100px;
+}
+
+.Add-Photo-container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px dashed #034fa8;
+  background: #fff;
+  padding: 3vw;
+  margin-top: 2vw;
+  border-radius: 9px;
+  margin-bottom: 2vw;
+}
+
+.image-upload1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 25px;
+}
+
+.image-grid1 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 0px;
+}
+
+.uploaded-image1 {
+  max-width: 80%;
+  max-height: 80px; /* Reduced maximum height */
+  object-fit: cover;
+}
+
+  
