@@ -1,3 +1,9 @@
 .App-Color{
     background-color: #58a9e0;
 }
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background: rgba(177, 227, 253, 0.64);
+  }

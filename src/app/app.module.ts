@@ -20,6 +20,7 @@ import { ForgotPasswordComponent } from './ForgotPassword/forgot-password/forgot
 import { MyprofilepageComponent } from './myprofilepage/myprofilepage.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { OtpverifyPageComponent } from './otpverify-page/otpverify-page.component';
+import { NewpostPageComponent } from './newpostLost-page/newpost-page.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { OtpverifyPageComponent } from './otpverify-page/otpverify-page.componen
     ForgotPasswordComponent,
     MyprofilepageComponent,
     DashboardPageComponent,
-    OtpverifyPageComponent
+    OtpverifyPageComponent,
+    NewpostPageComponent
   ],
   imports: [
     BrowserModule,
