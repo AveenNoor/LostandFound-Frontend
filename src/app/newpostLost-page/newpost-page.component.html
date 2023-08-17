@@ -94,10 +94,9 @@
                 <div class="my-post">
                   <div class="my-feed-div">
                     <div class="btns-founflost">
-                        <button class="active lost-item">Lost Item</button>
-                        <button class="Found-item">Found Item</button>
-                    </div>
-
+                      <button (click)="buttonSelected('Lost')" [ngClass]="{'active lost-item': formType === 'Lost', 'lost-item': formType !== 'Lost'}">Lost Item</button>
+                      <button (click)="buttonSelected('Found')" [ngClass]="{'active Found-item': formType === 'Found', 'Found-item': formType !== 'Found'}">Found Item</button>
+                    </div>                    
                 <form [formGroup]="createPost">
                   <div class="Add-Photo-container1">
                     <div class="image-upload1">
@@ -129,12 +128,18 @@
                     <div class="input-container">
                       <div class="color">
                           <p>Name:</p>
-                          <input type="Text" placeholder="Name" formControlName="postName" />
+                          <input 
+                          type="Text" 
+                          placeholder="Name"
+                          [style.border-color]="postNameF?.invalid && postNameF?.touched ? 'red' : ''"  
+                          formControlName="postName" />
                       </div>
                     </div>
                     <div class="dropdown">
                         <p class="type-space">Type:</p>
-                        <select id="communityDropdown" formControlName="postType">
+                        <select id="communityDropdown" 
+                        [style.border-color]="postTypeF?.invalid && postTypeF?.touched ? 'red' : ''"  
+                        formControlName="postType">
                         <option value="" disabled selected>Select a Community</option>
                         <option value="community1">Community 1</option>
                         <option value="community2">Community 2</option>
@@ -142,20 +147,41 @@
                         <option value="community4">Community 4</option>
                         </select>
                     </div>
-                    <div class="measurements">
+                    <!-- <div class="measurements">
                         <p>Width:</p>
                         <input type="numbers" placeholder="width (cm)" formControlName="postWidth"/>
                         <p>Height:</p>
                         <input type="numbers" placeholder="height (cm)" formControlName="postHeight" />
+                    </div> -->
+                    <div class="measurements">
+                      <p>Date and Time:</p>
+                      <input type="datetime-local" style="margin-left: 10px" placeholder="Select date and time" formControlName="dateTime"/>
                     </div>
                     <div class="input-container">
-                        <div class="color">
-                            <p>Color:</p>
-                            <input type="Text" placeholder="Color" formControlName="postColor"/>
-                        </div>
-                        <input class="description-div" type="text" placeholder="Enter description" formControlName="postDescription" />
+                      <div class="color">
+                          <p>Color:</p>
+                          <input 
+                          type="text" 
+                          style="margin-left: 3px;" 
+                          placeholder="Color" 
+                          formControlName="postColor"
+                          [style.border-color]="postColorF?.invalid && postColorF?.touched ? 'red' : ''"  />
+                      </div>
+                      <input class="description-div" type="text" placeholder="Enter description" formControlName="postDescription" />
+                  </div>
+                    <div class="input-container">
+                      <div class="color">
+                          <p>Location:</p>
+                          <!-- <input type="Text" placeholder="Location" formControlName="postLocation" /> -->
+                          <label  type="Text" placeholder="Location" formControlName="postLocation">{{markerPostion.lat}},{{markerPostion.lng}}</label>
+                      </div>
                     </div>
-                    <button class="location-btn">Pin on map</button>
+                    <!-- Map Container -->
+                    <div class="map-container">
+                      <google-map class="map-style" [center]="position" (mapClick)="onMapClick($event)">
+                        <map-marker [position]="markerPostion" [label]="label"></map-marker>
+                      </google-map>
+                    </div>
                 </form>
             </div>
         </div>

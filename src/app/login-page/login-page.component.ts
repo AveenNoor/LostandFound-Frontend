@@ -5,6 +5,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/auth'
 import 'firebase/firestore'
 
+//Connection with firebase
 var config = {
   apiKey: "AIzaSyALPwr6h1fbCfXnc2R8RIL73-mrDzdL_dA",
   authDomain: "lostandfound-161d8.firebaseapp.com",
@@ -36,6 +37,7 @@ export class LoginPageComponent implements OnInit{
     userPhone:new FormControl('',[Validators.required, Validators.pattern("\\+92\\d{10}")])
   })
 
+  //Getter function for form controls
   get userPhoneF(){
     return this.loginForm.get('userPhone');
   }
@@ -48,7 +50,6 @@ export class LoginPageComponent implements OnInit{
         console.log('Form is',newValue);
       }
     });
-
     //Remember me option implementation
     // Check local storage for remembered username
     const rememberedUsername = localStorage.getItem('rememberedUsername');
@@ -58,6 +59,7 @@ export class LoginPageComponent implements OnInit{
     }
   }
 
+  //On initialize function
   ngOnInit(): void {
     firebase.initializeApp(config);
     this.setupPhoneInput();
@@ -102,9 +104,6 @@ export class LoginPageComponent implements OnInit{
         userPhoneF.setValue(phoneNumber, { emitEvent: false });
       }
       else if(value && value.startsWith('+92')){}
-      // else if(value){
-      //   alert('Invalid Number entered! Please start with 0 or +92 as per your country code.');
-      // }
     });
   }
 

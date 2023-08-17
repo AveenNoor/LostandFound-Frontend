@@ -11,6 +11,7 @@ import { NgOtpInputModule } from 'ng-otp-input';
 import {NgxMaskModule} from 'ngx-mask';
 import { AuthService } from './auth.service';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {GoogleMapsModule} from '@angular/google-maps';
 
 //Components
 import { AppComponent } from './app.component';
@@ -46,7 +47,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgOtpInputModule,
     NgxMaskModule.forRoot(),
     BrowserAnimationsModule,
-    MatGridListModule
+    MatGridListModule,
+    GoogleMapsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
