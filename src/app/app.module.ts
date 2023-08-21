@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { NgOtpInputModule } from 'ng-otp-input';
 import {NgxMaskModule} from 'ngx-mask';
 import { AuthService } from './auth.service';
@@ -43,7 +42,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     AngularFireModule,
     AngularFireDatabaseModule,
-    AngularFireAuthModule,
     NgOtpInputModule,
     NgxMaskModule.forRoot(),
     BrowserAnimationsModule,
