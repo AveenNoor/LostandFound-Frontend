@@ -18,6 +18,12 @@ export class MyprofilepageComponent {
     this.router.navigate(['/myprofilepage']);
   }
 
+  //Function to go to edit profile
+  gotoEditProfile():void{
+    console.log('Going to edit page....');
+    this.router.navigate(['/editprofilepage']);
+  }
+
   //Function to go to new post page
   gotoNewPost() : void{
     console.log('Going to create new post page....');

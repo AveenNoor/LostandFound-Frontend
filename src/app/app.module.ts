@@ -23,6 +23,7 @@ import { DashboardPageComponent } from './dashboard-page/dashboard-page.componen
 import { OtpverifyPageComponent } from './otpverify-page/otpverify-page.component';
 import { NewpostPageComponent } from './newpostLost-page/newpost-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditProfilePageComponent } from './edit-profile-page/edit-profile-page.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MyprofilepageComponent,
     DashboardPageComponent,
     OtpverifyPageComponent,
-    NewpostPageComponent
+    NewpostPageComponent,
+    EditProfilePageComponent
   ],
   imports: [
     BrowserModule,

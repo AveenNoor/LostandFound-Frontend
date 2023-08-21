@@ -462,7 +462,7 @@ table {
   box-sizing: border-box;
 }
 .column:first-child {
-  flex: 1.3;
+  flex: 1.0;
 }
 .column:first-child p {
   flex: 1.3;
@@ -472,7 +472,7 @@ table {
   margin-top: 5%;
 }
 .column:last-child {
-  flex: 2.5; /* Adjust the value to make the second column bigger */
+  flex: 2.7; /* Adjust the value to make the second column bigger */
 }
 .column1:first-child {
   flex: 1;
@@ -511,4 +511,4 @@ table {
   margin-left: 12%;
   margin-bottom: 3%;
   margin-top:3%
-    }
+}
