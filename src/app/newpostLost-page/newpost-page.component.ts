@@ -130,6 +130,7 @@ export class NewpostPageComponent implements OnInit {
     console.log("before",this.markerPostion);
     this.markerPostion = { lat: event.latLng.lat(), lng: event.latLng.lng() };
     console.log("before",this.markerPostion);
+    ///////////////////Chnage this to seperate coordinates/////////////////
     this.postLocationF?.setValue(`${this.markerPostion.lat},${this.markerPostion.lng}`);
   }
 

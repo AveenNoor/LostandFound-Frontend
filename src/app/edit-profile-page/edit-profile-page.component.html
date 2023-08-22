@@ -94,98 +94,100 @@
               <div class="my-feed">
                 <div class="my-feed-grid"> 
                     <form class="editForm" [formGroup]="editProfForm">
-                        <div class="container">
+                        <!-- <h1 class="prof-heading">Profile</h1> -->
+                        <div class="row">
+                          <div class="column">
                             <div class="row">
-                                <div class="column">
-                                  <div class="image-upload-container">
-                                    <div class="circle-container">
-                                      <img
-                                        [src]="previewImageUrl"                                                
-                                        id="previewImage"
-                                        alt="Preview"/>
-                                    </div>
-                                  </div>
+                              <p>Username:</p>
+                            </div>
+                            <div class="row1">
+                              <input class="underlined-input" type="text" formControlName="editName" placeholder="Enter your username" />                          
+                            </div>
+                            <div class="line"></div>
+                            <div class="row">
+                              <p>Phone Number:</p>
+                            </div>
+                            <div class="row1">
+                                <input 
+                                  type='text' 
+                                  class="underlined-input"
+                                  placeholder="+92 xxx xxxxxxx"
+                                  maxlength="13"
+                                  readonly
+                                  formControlName="editNumber" 
+                                  placeholder="Enter your phone number" 
+                                />
+                            </div>
+                            <div class="line"></div>
+                            <div class="row">
+                              <p>Address:</p>
+                            </div>
+                            <div class="row1">
+                              <input
+                                type="text"
+                                class="underlined-input"
+                                formControlName="editAddress"
+                                placeholder={{editAddressF}}
+                              /> 
+                            </div>
+                            <div class="line"></div>
+                            <div class="row">
+                              <p>Community:</p>
+                            </div>
+                            <!-- <div class="row1"> -->
+                              <div class="dropdown">
+                                <select id="communityDropdown" formControlName="editCommunity">
+                                  <option value="" disabled selected>
+                                    Select Community
+                                  </option>
+                                  <option value="community1">Community 1</option>
+                                  <option value="community2">Community 2</option>
+                                  <option value="community3">Community 3</option>
+                                  <option value="community4">Community 4</option>
+                                </select>
+                              </div>
+                              <div class="row1">
+                                <div class="lineLast"></div>
+                              </div>
+                          </div>
+                          <div class="column">
+                            <div class="row">
+                              <div class="image-upload-container">
+                                <div class="circle-container">
+                                  <img
+                                    [src]="previewImageUrl"                                                
+                                    id="previewImage"
+                                    alt="Preview"/>
                                 </div>
-                                <div class="column">
-                                  <!-- <h1>Edit My Profile</h1> -->
-                                  <p style="color:black">Upload New Picture:</p>
-                                  <input 
-                                    class="edit-input-pic" 
-                                    type="file" 
-                                    id="imageInput" 
-                                    (change)="onImageSelected($event)" 
-                                    accept="image/*" 
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="edit-input-pic">
+                                <label class="file-input-label">
+                                  Choose an Image
+                                  <input
+                                    type="file"
+                                    id="imageInput"
+                                    (change)="onImageSelected($event)"
+                                    accept="image/*"
                                     formControlName="editImage"
                                   />
-                                </div>
-                            </div>
-                           
-                            <div class="edit-input-form">
-                            <div class="row">
-                                <div class="column">
-                                    <p>Username:</p>
-                                </div>
-                                <div class="column">
-                                    <input type="text" formControlName="editName" placeholder="Enter your username" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="column">
-                                    <p>Phone Number:</p>
-                                </div>
-                                <div class="column">
-                                    <input 
-                                      type='text' 
-                                      placeholder="+92 xxx xxxxxxx"
-                                      maxlength="13"
-                                      readonly
-                                      formControlName="editNumber" 
-                                      placeholder="Enter your phone number" 
-                                    />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="column">
-                                    <p>Address:</p>
-                                </div>
-                                <div class="column">
-                                    <input
-                                    type="text"
-                                    formControlName="editAddress"
-                                    placeholder={{editAddressF}}/> 
-                                </div>                           
-                            </div>
-                            <div class="row">
-                                <div class="column">
-                                    <p>Community:</p>
-                                </div>
-                                <div class="column">
-                                    <div class="dropdown">
-                                        <select id="communityDropdown" formControlName="editCommunity">
-                                          <option value="" disabled selected>
-                                            Select a Community
-                                          </option>
-                                          <option value="community1">Community 1</option>
-                                          <option value="community2">Community 2</option>
-                                          <option value="community3">Community 3</option>
-                                          <option value="community4">Community 4</option>
-                                        </select>
-                                    </div>  
-                                </div>                           
+                                </label>
                               </div>
-                              <div class="row">
-                                <button class="edit-prof-btn" (click)="gotoProfile()"> Update Profile</button>
-                              </div>
-                            </div>                          
-                        </div> 
+                            </div>
+                            <div class="row3">
+                              <button class="edit-prof-btn" (click)="gotoProfile()"> Update</button>
+                            </div>
+                           </div> 
+                        </div>
                       </form>
                     </div>
                   </div>
                 </div>
-              <div class="blue-design-div">
+              <!-- <div class="blue-design-div">
                 <img src="../../assets/Images/blue.png" />
                 <h1>WELCOME TO OUR LOST AND FOUND APP</h1>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
