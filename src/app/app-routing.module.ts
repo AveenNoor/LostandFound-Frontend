@@ -11,6 +11,8 @@ import { DashboardPageComponent } from './dashboard-page/dashboard-page.componen
 import { OtpverifyPageComponent } from './otpverify-page/otpverify-page.component';
 import { NewpostPageComponent } from './newpostLost-page/newpost-page.component';
 import { EditProfilePageComponent } from './edit-profile-page/edit-profile-page.component';
+import { MypostsPageComponent } from './myposts-page/myposts-page.component';
+import { PostdetailsPageComponent } from './postdetails-page/postdetails-page.component';
 
 const routes: Routes = [
   {path:'',component: LoginPageComponent},
@@ -22,6 +24,8 @@ const routes: Routes = [
   {path:'dashboardpage',component:DashboardPageComponent},
   {path:'newpostpage',component:NewpostPageComponent},
   {path:'editprofilepage',component:EditProfilePageComponent},
+  {path:'mypostspage',component:MypostsPageComponent},
+  {path:'postdetailspage',component:PostdetailsPageComponent},
   {path:'not-found', component: LoginPageComponent},
   {path:'**',redirectTo:'/not-found'}
 ];

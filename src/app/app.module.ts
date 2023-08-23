@@ -24,6 +24,9 @@ import { OtpverifyPageComponent } from './otpverify-page/otpverify-page.componen
 import { NewpostPageComponent } from './newpostLost-page/newpost-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditProfilePageComponent } from './edit-profile-page/edit-profile-page.component';
+import { MypostsPageComponent } from './myposts-page/myposts-page.component';
+import { PostdetailsPageComponent } from './postdetails-page/postdetails-page.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,9 @@ import { EditProfilePageComponent } from './edit-profile-page/edit-profile-page.
     DashboardPageComponent,
     OtpverifyPageComponent,
     NewpostPageComponent,
-    EditProfilePageComponent
+    EditProfilePageComponent,
+    MypostsPageComponent,
+    PostdetailsPageComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,8 @@ import { EditProfilePageComponent } from './edit-profile-page/edit-profile-page.
     NgxMaskModule.forRoot(),
     BrowserAnimationsModule,
     MatGridListModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    NgbModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
