@@ -90,6 +90,8 @@
 
           <!-- My Feed Component -->
           <div class="post-side-container">
+            <div class="my-dashboard">
+              <div class="my-dashborad-post">
                 <div class="my-post">
                    <div class="my-profile-detail">
                       <img src="../../assets/Images/Ellipse 4.png">
@@ -100,14 +102,48 @@
                    </div>
                    <div class="my-feed">
                       <div class="my-feed-grid">
-                        <img src="../../assets/Images/Rectangle 17.png">
+                        <ngb-carousel *ngIf="images">
+                          <ng-template ngbSlide>
+                            <div class="picsum-img-wrapper">
+                              <img [src]="images[0]" alt="Random first slide" />
+                            </div>
+                            <div class="carousel-caption">
+                              <!-- <h3>First slide label</h3> -->
+                            </div>
+                          </ng-template>
+                          <ng-template ngbSlide>
+                            <div class="picsum-img-wrapper">
+                              <img [src]="images[1]" alt="Random second slide" />
+                            </div>
+                            <div class="carousel-caption">
+                              <!-- <h3>Second slide label</h3> -->
+                            </div>
+                          </ng-template>
+                          <ng-template ngbSlide>
+                            <div class="picsum-img-wrapper">
+                              <img [src]="images[2]" alt="Random third slide" />
+                            </div>
+                            <div class="carousel-caption">
+                              <!-- <h3>Third slide label</h3> -->
+                            </div>
+                          </ng-template>
+                        </ngb-carousel>
+                          <div class="icon-btns">
+                              <img src="../../assets/Images/icons8-search-50-2.png">
+                              <img src="../../assets/Images/icons8-comment-45.png">
+                              <img src="../../assets/Images/icons8-share-45.png">
+                          </div>
+                        <p class="post-descrp">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q</p>
                       </div>
-                   </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="blue-design-div">
-                    <img src="../../assets/Images/blue.png">
-                    <h1>WELCOME TO OUR LOST AND FOUND APP</h1>
-                </div>
+                
+              </div>
+              <div class="blue-design-div">
+                  <img src="../../assets/Images/blue.png">
+                  <h1>WELCOME TO OUR LOST AND FOUND APP</h1>
+              </div>
             </div>  
           </div>
         </div>
