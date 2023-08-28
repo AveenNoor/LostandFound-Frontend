@@ -2,22 +2,20 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 //Importing Components
-import {LoginPageComponent} from './login-page/login-page.component';
-import { SignupPageComponent } from './signup-page/signup-page.component';
-import { OtpPageComponent } from './otp-page/otp-page.component';
+import { LoginPageComponent } from './Authentications/login-page/login-page.component';
+import { SignupPageComponent } from './Authentications/signup-page/signup-page.component';
 import { ForgotPasswordComponent } from './ForgotPassword/forgot-password/forgot-password.component';
-import { MyprofilepageComponent } from './myprofilepage/myprofilepage.component';
-import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
-import { OtpverifyPageComponent } from './otpverify-page/otpverify-page.component';
-import { NewpostPageComponent } from './newpostLost-page/newpost-page.component';
-import { EditProfilePageComponent } from './edit-profile-page/edit-profile-page.component';
-import { MypostsPageComponent } from './myposts-page/myposts-page.component';
-import { PostdetailsPageComponent } from './postdetails-page/postdetails-page.component';
+import { MyprofilepageComponent } from './Profile/myprofilepage/myprofilepage.component';
+import { DashboardPageComponent } from './MainDisplays/dashboard-page/dashboard-page.component';
+import { OtpverifyPageComponent } from './Authentications/otpverify-page/otpverify-page.component';
+import { NewpostPageComponent } from './Posts/newpostLost-page/newpost-page.component';
+import { EditProfilePageComponent } from './Profile/edit-profile-page/edit-profile-page.component';
+import { MypostsPageComponent } from './Posts/myposts-page/myposts-page.component';
+import { PostdetailsPageComponent } from './Posts/postdetails-page/postdetails-page.component';
 
 const routes: Routes = [
   {path:'',component: LoginPageComponent},
   {path:'signupPage',component: SignupPageComponent},
-  {path:'otppage',component:OtpPageComponent},
   {path:'otpverifypage',component:OtpverifyPageComponent},
   {path:'forgotpassword',component:ForgotPasswordComponent},
   {path:'myprofilepage',component:MyprofilepageComponent},

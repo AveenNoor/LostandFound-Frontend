@@ -11,29 +11,35 @@ import {NgxMaskModule} from 'ngx-mask';
 import { AuthService } from './auth.service';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {GoogleMapsModule} from '@angular/google-maps';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { JwtModule} from '@auth0/angular-jwt';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 //Components
 import { AppComponent } from './app.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { SignupPageComponent } from './signup-page/signup-page.component';
-import { OtpPageComponent } from './otp-page/otp-page.component';
+import { LoginPageComponent } from './Authentications/login-page/login-page.component';
+import { SignupPageComponent } from './Authentications/signup-page/signup-page.component';
 import { ForgotPasswordComponent } from './ForgotPassword/forgot-password/forgot-password.component';
-import { MyprofilepageComponent } from './myprofilepage/myprofilepage.component';
-import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
-import { OtpverifyPageComponent } from './otpverify-page/otpverify-page.component';
-import { NewpostPageComponent } from './newpostLost-page/newpost-page.component';
+import { MyprofilepageComponent } from './Profile/myprofilepage/myprofilepage.component';
+import { DashboardPageComponent } from './MainDisplays/dashboard-page/dashboard-page.component';
+import { OtpverifyPageComponent } from './Authentications/otpverify-page/otpverify-page.component';
+import { NewpostPageComponent } from './Posts/newpostLost-page/newpost-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EditProfilePageComponent } from './edit-profile-page/edit-profile-page.component';
-import { MypostsPageComponent } from './myposts-page/myposts-page.component';
-import { PostdetailsPageComponent } from './postdetails-page/postdetails-page.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EditProfilePageComponent } from './Profile/edit-profile-page/edit-profile-page.component';
+import { MypostsPageComponent } from './Posts/myposts-page/myposts-page.component';
+import { PostdetailsPageComponent } from './Posts/postdetails-page/postdetails-page.component';
+import { HeadersInterceptor } from './interceptors/headers.interceptor';
+
+//Get JWT token from local storage
+export function tokenGetter() {
+  return localStorage.getItem('access_token'); // Adjust this according to where you store the token
+}
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     SignupPageComponent,
-    OtpPageComponent,
     ForgotPasswordComponent,
     MyprofilepageComponent,
     DashboardPageComponent,
@@ -54,9 +60,20 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     MatGridListModule,
     GoogleMapsModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter,
+        disallowedRoutes : []
+      }
+    })
+    
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    {provide:HTTP_INTERCEPTORS , useClass:HeadersInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
