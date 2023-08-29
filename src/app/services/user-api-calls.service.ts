@@ -11,7 +11,7 @@ export class UserApiCallsService {
   //Constructors
   constructor(private http:HttpClient) { }
 
-  //Get user data call + JwtToken for authorization in Header
+  //Get user data call + JwtToken for authorization in Header*
   getUserAPICall() {
     return this.http.get<any>('https://exceedinternal.azurewebsites.net/api/User/GetUser');
   }
@@ -22,6 +22,11 @@ export class UserApiCallsService {
     return this.http.get(url);
   }
 
+  //Update user profile 
+  updateUserAPICall(data:any){
+    return this.http.put('https://exceedinternal.azurewebsites.net/api/User/UpdateUser',data);
+  }
+
   //Post user data call
   postUserAPICall(data:any){
     //return this.http.post('https://exceedinternal.azurewebsites.net/api/Items', data);
@@ -29,10 +34,10 @@ export class UserApiCallsService {
   }
 
   //Update user data by ID call
-  updateUserAPICall(userId:string, updatedUserData:any) {
-    const url = `${config.testApi_URL}/users/${userId}`;
-    return this.http.put(url, updatedUserData);
-  }
+  // updateUserAPICall(userId:string, updatedUserData:any) {
+  //   const url = `${config.testApi_URL}/users/${userId}`;
+  //   return this.http.put(url, updatedUserData);
+  // }
 
   //Get user items
   getUserItems() {

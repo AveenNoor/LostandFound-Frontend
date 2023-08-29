@@ -114,6 +114,34 @@ export class EditProfilePageComponent implements OnInit {
     }
   }
 
+  //Converting form to formdata
+  getFormDataFromForm() {
+    const formData = new FormData();
+    formData.append('Name', this.editNameF?.value);
+    formData.append('Number', this.editNumberF?.value);
+    formData.append('Address', this.editAddressF?.value);
+    formData.append('Community', this.editCommunityF?.value);
+    const selectedImage = this.editProfForm.get('editImage')?.value;
+    if (selectedImage) {
+      formData.append('ImageFile', selectedImage, 'profile-image.png');
+    }
+    return formData;
+  }
+
+  // On form submission function
+  onSubmission(): void {
+    const formData = this.getFormDataFromForm();
+    this.apiCall.updateUserAPICall(formData).subscribe(
+      (response) => {
+        console.log('Profile updated:', response);
+      },
+      (error) => {
+        console.error('Error updating profile:', error);
+      }
+    );
+  }
+
+
 }
 
 
