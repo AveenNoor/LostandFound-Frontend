@@ -63,6 +63,12 @@ export class DashboardPageComponent {
     this.router.navigate(['/newpostpage']);
   }
 
+  //Function to go to my profile
+  gotoMyProfile() : void{
+    console.log('Going to my profile page....');
+    this.router.navigate(['/myprofilepage']);
+  }
+
   //Toggle heart
   toggleHeart():void {
     this.isHeartToggled = !this.isHeartToggled;

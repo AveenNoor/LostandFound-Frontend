@@ -119,6 +119,8 @@
                                 />
                             </div>
                             <div class="line"></div>
+                          </div>
+                          <div class="column">
                             <div class="row">
                               <p>Address:</p>
                             </div>
@@ -149,6 +151,9 @@
                               <div class="row1">
                                 <div class="lineLast"></div>
                               </div>
+                              <div class="row2">
+                                <button class="edit-prof-btn" (click)="gotoProfile()"> Update Profile</button>
+                              </div>
                           </div>
                           <div class="column">
                             <div class="row">
@@ -170,13 +175,10 @@
                                     id="imageInput"
                                     (change)="onImageSelected($event)"
                                     accept="image/*"
-                                    formControlName="editImage"
+                                    #imageInputRef
                                   />
                                 </label>
                               </div>
-                            </div>
-                            <div class="row3">
-                              <button class="edit-prof-btn" (click)="gotoProfile()"> Update</button>
                             </div>
                            </div> 
                         </div>

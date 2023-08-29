@@ -129,7 +129,8 @@ p {
   background: #fff;
   box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.11);
   padding: 3vw;
-  width: 62%;
+  width: 82%;
+  overflow-x: hidden;
 }
 .post-side-container {
   display: flex;
@@ -161,6 +162,7 @@ p {
   margin-top: 2vw;
   max-height: 260px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 ::-webkit-scrollbar {
   width: 8px; /* Width of the scroll bar */
@@ -249,17 +251,19 @@ p {
   display: flex;
   gap: 1vw;
   align-items: center;
-  margin-top: -2%;
+  margin-top: -4%;
 }
 
 #communityDropdown {
   margin-left: -0.5%;
-  width: 48%;
+  width: 68%;
+  /* height: 10%; */
   font-size: 14px;
   border-radius: 0.85rem;
   border: none; /* Remove the border */
   background: #fff;
-  padding: 1.042vw;
+  padding: 11px;
+  color: #7b7b7b;
   appearance: none; /* Remove platform-specific styling */
 }
 
@@ -405,7 +409,7 @@ table {
   font-weight: 400;
   line-height: normal;
 }
-.my-feed-grid button {
+/* .my-feed-grid button {
   padding: 0.521vw 1.042vw;
   cursor: pointer;
   border: none;
@@ -423,17 +427,13 @@ table {
   line-height: normal;
   border-radius: 5px;
   margin-top: 5%;
-}
+} */
 .my-feed-grid button:hover{
   background: #18d04c;
   border: 1px solid #18d04c;
 }
 .image-upload-container{
-  text-align: center;
   margin: auto;
-  display: flex;
-  flex-direction: row;
-  margin-top: 1%;
   align-items: center;
 }
 .circle-container {
@@ -447,12 +447,12 @@ table {
 }
 
 .circle-container img{
-  margin-left: -10%;
+  margin-left: 10%;
 }
 
 #previewImage {
-  width: 110%;
-  height: auto;
+  width: 100px;
+  height: 150px;
 }
   
 .edit-table{
@@ -478,10 +478,10 @@ table {
 }
 
 .row3{
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  margin-top: -10%;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  padding: 0px;
+  margin-top: -5%;
   align-items: center;
 }
 
@@ -496,6 +496,7 @@ table {
 .underlined-input {
   position: relative;
   border: none;
+  font-size: 14px;
 }
 .underlined-input:focus {
   outline: none; /* Remove the default outline on focus */
@@ -551,9 +552,9 @@ table {
 }
 
 .column:first-child p{
-  margin-left: 0%;
+  /* margin-left: 0%;
   color: #7b7b7b;
-  font-weight: normal;
+  font-weight: normal; */
 }
 .edit-input{
   margin: auto;
@@ -563,7 +564,7 @@ table {
 .edit-input-pic {
   position: relative;
   margin: auto;
-  margin-left: 22%;
+  margin-left: 15%;
   margin-top: -4%;
 }
 
@@ -605,26 +606,27 @@ table {
 
 
 
-.edit-prof-btn{
-  /* padding: 0.521vw 1.042vw; */
+.edit-prof-btn {
   cursor: pointer;
   border: none;
   color: white;
   background: #03a832;
-  border: 1px solid #03a832;
   border-radius: 0.4rem;
   box-shadow: 0px 4px 38px 0px rgba(0, 0, 0, 0.11) inset;
-  width: 67%;
-  height: 15%;
+  width: auto; /* Adjust the width as needed */
+  height: auto; /* Adjust the height as needed */
   transition: background-color 0.3s ease, color 0.3s ease;
   font-family: "Barlow", sans-serif;
-  font-size: 1.2vw;
+  font-size: 1.0rem; /* Use 'rem' for font size */
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  border-radius: 5px;
-  margin-left: 33%;
+  margin-top: 5%;
+  margin-left: 14%;
+  padding: 0.5rem 1rem; /* Add padding */
+  box-sizing: border-box; /* Include padding and borders within width */
 }
+
 
 .prof-heading{
   font-size: 60px;

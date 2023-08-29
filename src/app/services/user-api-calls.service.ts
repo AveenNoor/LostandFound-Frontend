@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {config} from './APIConfigs';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserApiCallsService {
 
   //Constructors
@@ -12,7 +13,7 @@ export class UserApiCallsService {
 
   //Get user data call + JwtToken for authorization in Header
   getUserAPICall() {
-    return this.http.get(config.testApi_URL);
+    return this.http.get<any>('https://exceedinternal.azurewebsites.net/api/User/GetUser');
   }
 
   //Get user data by ID
@@ -23,7 +24,8 @@ export class UserApiCallsService {
 
   //Post user data call
   postUserAPICall(data:any){
-    return this.http.post('https://exceedinternal.azurewebsites.net/api/Items', data);
+    //return this.http.post('https://exceedinternal.azurewebsites.net/api/Items', data);
+    return this.http.post('https://exceedinternal.azurewebsites.net/api/User/AddUser',data);
   }
 
   //Update user data by ID call
@@ -34,6 +36,6 @@ export class UserApiCallsService {
 
   //Get user items
   getUserItems() {
-    return this.http.get<any[]>('https://exceedinternal.azurewebsites.net/api/Items/GetUserItems');
+    return this.http.get<any>('https://exceedinternal.azurewebsites.net/api/Items/GetUserItems');
   }
 }

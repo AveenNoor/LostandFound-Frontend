@@ -66,7 +66,7 @@ export class LoginPageComponent implements OnInit{
     this.setupPhoneInput();
     this.setupPhoneInput();
     this.applyPhoneNumberMask();
-    if(this.isTokenValid==false){
+    if(this.isTokenValid===false){
       this.router.navigate(['/dashboardpage']);
     }
   }

@@ -92,13 +92,12 @@
           <div class="post-side-container">
             <div class="my-post">
                 <div class="grid-container">
-                    <!-- Your grid items -->
-                    <div class="grid-item" *ngFor="let item of imageData">
-                      <div class="my-posts">
-                        <img [src]="item.imageUrl" alt="Item Image">
-                        <div class="post-overlay">{{ item.Name }}</div>
-                      </div>
+                  <div class="grid-item" *ngFor="let item of imageData">
+                    <div class="my-posts">
+                      <img [src]="item.imageUrl" alt="Item Image">
+                      <div class="post-overlay">{{ item.name }}</div>
                     </div>
+                  </div>
                   </div>
                  </div>
             </div>

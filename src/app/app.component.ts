@@ -17,8 +17,12 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    // this.router.navigate(['/']);
-    this.router.navigate(['/mypostspage']);
+    this.router.navigate(['/']);
+    // this.router.navigate(['/dashbaordpage']);
+    // this.router.navigate(['/postdetailspage']);
+    // this.router.navigate(['/mypostspage']);
+    // this.router.navigate(['editprofilepage']);
+
   }
 
 }
