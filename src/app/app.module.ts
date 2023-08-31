@@ -29,6 +29,9 @@ import { EditProfilePageComponent } from './Profile/edit-profile-page/edit-profi
 import { MypostsPageComponent } from './Posts/myposts-page/myposts-page.component';
 import { PostdetailsPageComponent } from './Posts/postdetails-page/postdetails-page.component';
 import { HeadersInterceptor } from './interceptors/headers.interceptor';
+import { FoundItemsComponent } from './MainDisplays/found-items-page/found-items.component';
+import { LostItemsComponent } from './MainDisplays/lost-items-page/lost-items.component';
+import { PostIdCommuicationService } from './services/post-id-commuication.service';
 
 //Get JWT token from local storage
 export function tokenGetter() {
@@ -47,7 +50,9 @@ export function tokenGetter() {
     NewpostPageComponent,
     EditProfilePageComponent,
     MypostsPageComponent,
-    PostdetailsPageComponent
+    PostdetailsPageComponent,
+    FoundItemsComponent,
+    LostItemsComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +77,7 @@ export function tokenGetter() {
   ],
   providers: [
     AuthService,
+    PostIdCommuicationService,
     {provide:HTTP_INTERCEPTORS , useClass:HeadersInterceptor, multi:true}
   ],
   bootstrap: [AppComponent],

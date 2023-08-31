@@ -125,12 +125,9 @@ body {
     color: black !important;
   }
   .my-post {
-    border-radius: 0.9375rem;
-    background: #fff;
-    box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.11);
     padding: 3vw;
+    padding-bottom: 0vw;
     width: 100%;
-    height: auto;
   }
   .post-side-container {
     display: flex;
@@ -160,10 +157,7 @@ body {
   }
   .my-feed {
     margin-top: 2vw;
-    max-height: 100%;
-    overflow-y: scroll;
   }
-
   ::-webkit-scrollbar {
     width: 8px; /* Width of the scroll bar */
   }
@@ -250,7 +244,7 @@ body {
     display: flex;
     gap: 1vw;
     align-items: center;
-    margin-top: 2vw;
+    margin-top: 2vw;;
   }
   #communityDropdown {
     width: 50%;
@@ -267,65 +261,47 @@ body {
     color: #333;
     border: none;
   }
-  .measurements,
-  .color {
+  .measurements, .color{
     display: flex;
     align-items: center;
     gap: 1vw;
-    margin-top: 2vw;
+    margin-top: 2vw;;
   }
-  .color {
-    margin-top: 0vw;
+  .color{
+    margin-top: 0vw;;
   }
-  .dropdown p,
-  .measurements p,
-  .input-container p, .my-feed-grid p {
+  .dropdown p, .measurements p, .input-container p {
     color: #000;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto',sans-serif;
     font-size: 1.3vw;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
   }
-  .my-feed-grid p{
-    margin-top: 2%;
-    font-weight: bold;
-  }
-  .my-feed-grid span{
-    font-weight: 400;
-  }
-  .measurements input,
-  .input-container input,
-  .search-container input, .edit-input-form input {
+  .measurements input, .input-container input, .search-container input{
     max-width: 100%;
     border-radius: 0.875rem;
     border: 1px solid #c3c3c3;
     background: #fff;
     padding: 1.042vw;
   }
-  .edit-input-form input{
-    width: 50%;;
-    margin-top: 2vw;
-  }
-  .search-container input {
+  .search-container input{
     border-radius: 0.4rem 0rem 0rem 0.4rem;
     width: 80%;
   }
-  .search-container {
+  .search-container{
     display: flex;
   }
-  .input-container {
+  .input-container{
     display: flex;
     flex-direction: column;
     gap: 1vw;
     margin-top: 2vw;
   }
-  .input-container input {
+  .input-container input{
     width: 60%;
   }
-  .measurements input::placeholder,
-  .input-container input::placeholder,
-  .search-container input::placeholder {
+  .measurements input::placeholder, .input-container input::placeholder,  .search-container input::placeholder{
     color: #aeadad;
     font-family: "Roboto", sans-serif;
     font-size: 1vw;
@@ -334,14 +310,14 @@ body {
     line-height: 138.5%; /* 1.90438rem */
     letter-spacing: 0.04813rem;
   }
-  .description-div {
+  .description-div{
     height: 120px;
     width: 70% !important;
   }
-  .location-btn {
+  .location-btn{
     width: 30%;
     border-radius: 0.5625rem;
-    background: #37c155;
+    background: #37C155;
     color: #fff;
     font-family: "Robot", sans-serif;
     font-size: 1.2vw;
@@ -350,339 +326,132 @@ body {
     line-height: 138.5%; /* 2.68344rem */
     letter-spacing: 0.06781rem;
     padding: 0.781vw;
-    border: 1px solid #37c155;
+    border: 1px solid #37C155;
     margin-top: 1vw;
     cursor: pointer;
   }
-  .location-btn:hover {
-    background: #3ede62;
-    border: 1px solid #3ede62;
+  .location-btn:hover{
+    background: #3EDE62;
+    border: 1px solid #3EDE62;
   }
-  .my-feed-div {
+  .my-feed-div{
     max-height: 360px;
     overflow-y: scroll;
-    padding-right: 16px;
+    padding-right: 16px;;
   }
-  .search-button {
-    background: #034fa8;
-    border: 1px solid #034fa8;
-    border-radius: 0rem 0.4rem 0.4rem 0rem;
+  .search-button{
+    background: #034FA8;
+      border: 1px solid #034FA8;
+      border-radius: 0rem 0.4rem 0.4rem 0rem;
   }
-  .search-button img {
+  .search-button img{
     width: 60%;
-  }
-  table {
+  } 
+  table{
     width: 100%;
   }
-  .heading-row-table {
+  .heading-row-table{
     display: flex;
     justify-content: space-between;
   }
-  .heading-row-table th {
+  .heading-row-table th{
     color: #000;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto',sans-serif;
     font-size: 1.3vw;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-  }
-  .my-feed-grid button {
-    padding: 0.521vw 1.042vw;
-    cursor: pointer;
-    border: none;
-    color: white;
-    background: #03a832;
-    border: 1px solid #03a832;
-    border-radius: 0.4rem;
-    box-shadow: 0px 4px 38px 0px rgba(0, 0, 0, 0.11) inset;
-    width: 30%;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-family: "Barlow", sans-serif;
-    font-size: 1.2vw;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    border-radius: 5px;
-    margin-top: 5%;
-  }
-  .my-feed-grid button:hover{
-    background: #18d04c;
-    border: 1px solid #18d04c;
-  }
-  .image-upload-container{
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    margin-top: 8%;
-    align-items: center;
-  }
-  .circle-container {
-    /* width: 30%;
-    height: 30%;
-    overflow: hidden;
-    border-radius: 50%; */
-    width: 112px;
-    height: 112px;
-    overflow: hidden;
-    border-radius: 50px;
+  
   }
   
-  #previewImage {
-    width: 100%;
-    height: auto;
+  /* routings */
+  .toProfile-btn{
+    background-color: transparent;
+    border: none;
+    margin-left: -3px;
   }
-    
-  .edit-table{
-      display: none;
-   }
-
-  .row {
+  
+  .my-dashboard{
+    width: 110%;
+    border-radius: 0.9375rem;
+    background: #fff;
+    box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.11);
+  }
+  .my-dashborad-post{
+    max-height: 460px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .icon-btns {
     display: flex;
-    justify-content: space-between;
-    /* border: 5px solid #ccc; */
+    margin-top: -2%;
+    margin-bottom: 1%;
   }
-
-  .column {
-    flex: 1; /* First child will take equal space */
-    padding: 0px;
-    box-sizing: border-box;
+  
+  .icon-btns img {
+    width: 9%;
   }
-
-  .column:last-child{
-    margin-left: 4%;
+  
+  /* Apply spacing between the first three images */
+  .icon-btns img:nth-child(-n + 3) {
+    margin-right: 12px;
   }
+  
+  /* Apply larger spacing for the last image */
+  .icon-btns img:last-child(4) {
+    margin-right: 100px;
+  }
+  
+  .post-btns{
+    display: flex;
+  }
+  
   ngb-carousel{
     height:300px
   }
-
+  
   ngb-carousel img{
-    height: 300px;
-    width: 98%;
-    border-radius: 15px;
-  }
-
-  .description{
-    font-family: "Georgia", Times, serif;
-    margin-left: 3%;
-  }
-
-  .description-tags{
-    font-size: 14px;
-    font-family: "Georgia", Times, serif;
-    border: 1px solid rgb(124, 124, 124);
+    height: 280px;
+    width: 100%;
     border-radius: 5px;
-    width: fit-content;
-    background-color: rgba(231, 244, 252, 0.64);
-    margin-left: 0%;
-    color: black;
-    margin-top: 1%;
-    padding: 3px;
-    display:flex;
-    align-items: center;
-    margin-right: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  
   }
-
-  .heading1-name{
-    font-weight: bold;
-    font-size: 26px;
+  
+  .post-descrp{
     font-family: "Georgia", Times, serif;
-  }
-
-  .heading2-tag{
-    font-weight: bold;
     font-size: 14px;
-    font-family: "Georgia", Times, serif;
-    border: 1px solid rgb(124, 124, 124);
-    border-radius: 5px;
-    width: auto;
-    background-color: rgba(231, 244, 252, 0.64);
-    margin-left: 3%;
-    color: black;
+    font-weight: normal;
+    text-align: justify;
+    color: #7b7b7b;
   }
-
-  .heading3-desc{
-    margin-top: 3%;
-    font-size: 14px;
-    font-family: "Georgia", Times, serif;
-    width: 80%;
-    height: 130px;
-    overflow-y: scroll;
-    margin-left: 1%;
-    color: black;
-  }
-
-  .heading4-matches{
-    margin-top: 3%;
-    font-weight: bold;
-    font-size: 14px;
-    margin-left: 1%;
+  
+  .row {
     display: flex;
-    font-family: "Georgia", Times, serif;
-  }
-
-  .heading5-type{
-    margin-top: 3%;
-    font-weight: bold;
-    font-size: 14px;
-    margin-left: 1%;
-    display: flex;
-    font-family: "Georgia", Times, serif;
-
-  }
-
-  .heading6-location{
-    margin-top: 12%;
-    font-weight: bold;
-    font-size: 14px;
-    margin-left: 0%;
-    display: flex;
-    font-family: "Georgia", Times, serif;
-  }
-
-  .heading7-dateTime{
-    margin-top: 3%;
-    font-weight: bold;
-    font-size: 14px;
-    margin-left: 0%;
-    display: flex;
-    font-family: "Georgia", Times, serif;
-  }
-
-  .heading8-AIdesc{
-    margin-top: 3%;
-    font-size: 14px;
-    font-family: "Georgia", Times, serif;
-    width: 80%;
-    height: 140px;
-    overflow-y: scroll;
-    margin-left:0%;
-    color: black;
-  }
-
-  .heading9-AItags{
-    margin-top: 3%;
-    font-size: 14px;
-    font-family: "Georgia", Times, serif;
-    width: 80%;
-    height: 60px;
-    overflow-y: scroll;
-    margin-left: 0%;
-    color: black;
-  }
-
-  .heading4-matches p{
+    justify-content: space-between;
+    padding: 5px;
     margin-top: -1%;
-    margin-left: 2%;
-    font-weight: normal;
-  }
-
-  .heading5-color{
-    margin-top: 5%;
-    font-weight: bold;
-    font-size: 14px;
-    margin-left: 3%;
-    display: flex;
-    font-family: "Georgia", Times, serif;
-  }
-
-  .map-container{
-    height: 300px;
-    width: 98%;
-    margin-top: 5%;
-  }
-
-  .map{
-    margin-left: 0%;
-    margin-top: 10%;
-    width:98%;
-    height:350px;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0px 4px 19px 0px rgba(0, 0, 0, 0.11);
-
-  }
-
-  google-map{
-    width:50%;
-    height: 50%;
+    margin-left: -1%;
   }
   
-  /* .map-style{
-    width: 100%;
-    height: 100%;
-    border-radius: 50px;
-  }
-   */
-
-  .image-list{
-    display: flex;
-  }
-
-  .image-list {
-    display: flex;
-    gap: 10px;
+  .column {
+    flex: 1; /* First child will take equal space */
+    padding: 0px;
+    /* border-right: 5px solid #ccc; */
+    box-sizing: border-box;
   }
   
-  .circular-image {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
+  .column:last-child{
+    text-align: right;
+    padding-right: 2px;
   }
   
-  .circular-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  .view-details-btn{
+    
+    /* background: rgba(231, 244, 252, 0.64); */
+    background-color: transparent;
+    border:none;
+    border-radius: 10px;  
+    height: 25px;
   
-
-  .description-fixed{
-    font-weight: bold;
-    font-size: 14px;
-    display:flex;
-    font-family: "Georgia", Times, serif;
-
   }
-
-  .description{
-    font-family: "Georgia", Times, serif;
-    font-size: 14px;
-    font-weight: normal;
-  }
-  
-
-  .display-flex{
-    display: flex;
-  }
-  
-  .loginbtn{
-    margin-top: 8%;
-    padding: 0.521vw 1.042vw;
-    cursor: pointer;
-    border: none;
-    background: #e9e9e9;
-    box-shadow: 0px 4px 38px 0px rgba(0, 0, 0, 0.11) inset;
-    width: 83%;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    color: rgba(0, 0, 0, 0.37);
-    font-family: "Barlow", sans-serif;
-    font-size: 1.4vw;
-    font-style: normal;
-    font-weight: 600;
-    border-radius: 13px;
-    line-height: normal;
-  }
-
-  .loginbtn:hover{
-    background: linear-gradient(90deg, #72baec 0%, #54a6de 100%);
-    color: #ffffff;
-    font-family: "Barlow", sans-serif;
-    font-size: 1.4vw;
-    font-style: normal;
-    font-weight: 800;
-    line-height: normal;
-  }
-  
-  
-  

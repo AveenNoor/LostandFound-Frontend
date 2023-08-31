@@ -39,34 +39,9 @@ export class DashboardPageComponent {
     })
   }
 
-  //Function to go to profile
-  gotoProfile() : void{
-    console.log('Going to my profile page....');
-    this.router.navigate(['/myprofilepage']);
-  }
-
-  //Function to go to my posts
-  gotomyPosts():void{
-    console.log('Going to my posts page....');
-    this.router.navigate(['/mypostspage']);
-  }
-
-  //Function to go to product description
-  goToDetails() : void {
-    console.log('Going to my profile page....');
-    this.router.navigate(['/myprofilepage']);
-  }
-
-  //Function to go to new post page
-  gotoNewPost() : void{
-    console.log('Going to create new post page....');
-    this.router.navigate(['/newpostpage']);
-  }
-
-  //Function to go to my profile
-  gotoMyProfile() : void{
-    console.log('Going to my profile page....');
-    this.router.navigate(['/myprofilepage']);
+  //Navigation Function
+  goto(data:string){
+    this.router.navigate([data]);
   }
 
   //Toggle heart
@@ -79,9 +54,4 @@ export class DashboardPageComponent {
     this.isSaveToggled = !this.isSaveToggled;
   }
 
-  //Go to post details page
-  gotoPostDetails():void{
-    console.log('Going to post details page...');
-    this.router.navigate(['/postdetailspage']);
-  }
 }

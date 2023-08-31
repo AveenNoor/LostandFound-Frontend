@@ -30,7 +30,7 @@ export class UserApiCallsService {
   //Post user data call
   postUserAPICall(data:any){
     //return this.http.post('https://exceedinternal.azurewebsites.net/api/Items', data);
-    return this.http.post('https://exceedinternal.azurewebsites.net/api/User/AddUser',data);
+    return this.http.post('https://exceedinternal.azurewebsites.net/api/Items',data);
   }
 
   //Update user data by ID call

@@ -94,29 +94,10 @@
                   <div class="row">
                     <div class="column">
                       <div style="margin-top: 2%;" class="row">
-                        <ngb-carousel *ngIf="images">
-                          <ng-template ngbSlide>
+                        <ngb-carousel>
+                          <ng-template ngbSlide *ngFor="let imageUrl of myObject.imageUrls.$values">
                             <div class="picsum-img-wrapper">
-                              <img [src]="images[0]" alt="Random first slide" />
-                            </div>
-                            <div class="carousel-caption">
-                              <!-- <h3>First slide label</h3> -->
-                            </div>
-                          </ng-template>
-                          <ng-template ngbSlide>
-                            <div class="picsum-img-wrapper">
-                              <img [src]="images[1]" alt="Random second slide" />
-                            </div>
-                            <div class="carousel-caption">
-                              <!-- <h3>Second slide label</h3> -->
-                            </div>
-                          </ng-template>
-                          <ng-template ngbSlide>
-                            <div class="picsum-img-wrapper">
-                              <img [src]="images[2]" alt="Random third slide" />
-                            </div>
-                            <div class="carousel-caption">
-                              <!-- <h3>Third slide label</h3> -->
+                              <img [src]="imageUrl" alt="Random first slide" />
                             </div>
                           </ng-template>
                         </ngb-carousel>
@@ -130,16 +111,16 @@
                     </div>
                     <div class="column">
                       <div class="row">
-                        <label class="display-flex"> <p class="heading1-name">Lost Flowers by Amna</p></label>
+                        <label class="display-flex"> <p class="heading1-name">{{ myObject.name }}</p></label>
                       </div>
                       <div class="row">
-                       <div class="heading2-tag">Category: Books</div>
+                       <div class="heading2-tag">Category: {{ myObject.category }}</div>
                       </div>
                       <div class="row">
-                        <label class="heading3-desc">As Dr. Lane races against time to unlock the secrets of this forgotten world, she discovers not only the secrets of the past but also the profound connections that bind us across time. Embark on a quest of discovery, courage, and revelation in this page-turning adventure that challenges the boundaries of knowledge and the power of human curiosity.The Enigma Chronicles: Unveiling the Secrets of a Forgotten World" takes readers on an exhilarating journey through an ancient realm shrouded in mystery. Follow the intrepid archaeologist, Dr. Amelia Lane, as she deciphers cryptic clues and delves into hidden ruins, unearthing a lost civilization's untold stories.</label>
+                        <label class="heading3-desc">{{ myObject.description }}</label>
                       </div>
                       <div class="row">
-                        <div class="heading5-type">Lost by Username.</div>
+                        <div class="heading5-type">{{ myObject.type }} by {{ myObject.username}}.</div>
                       </div>
                       <div class="row">
                         <div class="heading4-matches">Matched Items:</div>
@@ -149,39 +130,27 @@
                           </div>
                         </div>
                       </div>
-                      <!-- <div class="row" style="margin-top: 12%;">
-                        <label class="display-flex"> <p class="description-fixed">The description for location the product has been Lost/Found at and the timmings when it was found around, is given below:</p></label>
-                      </div>  -->
                       <div class="row">
-                        <label class="heading6-location"> <p class="description-fixed">Location:</p> <p class="description">Liberty Plaza</p></label>
+                        <label class="heading6-location"> <p class="description-fixed">Location:</p> <p class="description">{{myObject.latitude}} , {{myObject.longitude}}</p></label>
                       </div>
                       <div class="row">
-                        <label class="heading7-dateTime"> <p class="description-fixed">Lost on (Date):</p> <p class="description">12-24-23</p></label>
+                        <label class="heading7-dateTime"> <p class="description-fixed">{{ myObject.type }} at:</p> <p class="description">{{myObject.time}}</p></label>
                       </div>
-                      <div class="row">
-                        <label class="heading7-dateTime"> <p class="description-fixed">Lost at (Time):</p> <p class="description">12:30:00 PM</p></label>
-                      </div>
+                      <!-- <div class="row">
+                        <label class="heading7-dateTime"> <p class="description-fixed">Resolved Time:</p> <p class="description">{{myObject.resolvedTime}}</p></label>
+                      </div> -->
                       <div class="row">
                         <label class="heading8-AIdesc"> <p class="description-fixed">AI Generated Description:</p>  As Dr. Lane races against time to unlock the secrets of this forgotten world, she discovers not only the secrets of the past but also the profound connections that bind us across time. Embark on a quest of discovery, courage, and revelation in this page-turning adventure that challenges the boundaries of knowledge and the power of human curiosity.The Enigma Chronicles: Unveiling the Secrets of a Forgotten World" takes readers on an exhilarating journey through an ancient realm shrouded in mystery. Follow the intrepid archaeologist, Dr. Amelia Lane, as she deciphers cryptic clues and delves into hidden ruins, unearthing a lost civilization's untold stories.</label>
+                        <label class="heading9-AItags"> 
+                          <p class="description-fixed">AI Generated Tags for this Post:</p>
+                          <div style="display:flex">
+                            <ng-container *ngFor="let tag of myTags">
+                              <span class="description-tags">{{ tag }}</span>
+                            </ng-container>
+                          </div>
+                        </label>
                       </div>
                       <button type="submit" class="loginbtn">Chat with Owner</button>
-
-    
-                      <!-- <div class="row">
-                        <div class="display-flex"> <p >Lost Item</p></div>
-                      </div>
-                      <div class="row">
-                        <label class="display-flex"> <p class="description-fixed">Name:</p> <p class="description">Lost Flowers by Amna</p></label>
-                      </div>
-                      <div class="row">
-                        <label class="display-flex"> <p class="description-fixed">Type:</p> <p class="description">Books</p></label>
-                      </div>
-                      <div class="row">
-                        <label class="display-flex"> <p class="description-fixed">Color:</p> <p class="description">Yellow</p></label>
-                      </div>
-                      <div class="row">
-                        <label class="display-flex"> <p class="description-fixed">Location:</p> <p class="description">Liberty Plaza</p></label>
-                      </div>  -->
                     </div>
                   </div>
                 </div>

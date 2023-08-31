@@ -66,7 +66,7 @@ export class LoginPageComponent implements OnInit{
     this.setupPhoneInput();
     this.setupPhoneInput();
     this.applyPhoneNumberMask();
-    if(this.isTokenValid===false){
+    if(!this.isTokenValid){
       this.router.navigate(['/dashboardpage']);
     }
   }
@@ -135,7 +135,7 @@ export class LoginPageComponent implements OnInit{
     const token = localStorage.getItem('authToken'); // Retrieve the token from storage
     if (token) {
       return !this.jwtHelper.isTokenExpired(token);
-    }
+    } 
     return false; // Token not found
   }
 

@@ -156,7 +156,7 @@ export class NewpostPageComponent implements OnInit {
     const formData = new FormData();
     formData.append('Name', this.postNameF?.value);
     formData.append('Description', this.postDescriptionF?.value);
-    formData.append('Type', this.postTypeF?.value);
+    formData.append('Type', this.postKindF?.value);
     formData.append('Color', this.postColorF?.value);
     for (const img of this.postImagesF.value) {
       const blob = this.dataURItoBlob(img);

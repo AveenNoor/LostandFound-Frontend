@@ -12,6 +12,8 @@ import { NewpostPageComponent } from './Posts/newpostLost-page/newpost-page.comp
 import { EditProfilePageComponent } from './Profile/edit-profile-page/edit-profile-page.component';
 import { MypostsPageComponent } from './Posts/myposts-page/myposts-page.component';
 import { PostdetailsPageComponent } from './Posts/postdetails-page/postdetails-page.component';
+import { FoundItemsComponent } from './MainDisplays/found-items-page/found-items.component';
+import { LostItemsComponent } from './MainDisplays/lost-items-page/lost-items.component';
 
 const routes: Routes = [
   {path:'',component: LoginPageComponent},
@@ -24,6 +26,8 @@ const routes: Routes = [
   {path:'editprofilepage',component:EditProfilePageComponent},
   {path:'mypostspage',component:MypostsPageComponent},
   {path:'postdetailspage',component:PostdetailsPageComponent},
+  {path:'founditemspage',component:FoundItemsComponent},
+  {path:'lostitemspage',component:LostItemsComponent},
   {path:'not-found', component: LoginPageComponent},
   {path:'**',redirectTo:'/not-found'}
 ];
