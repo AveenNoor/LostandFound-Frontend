@@ -86,22 +86,9 @@ export class NewpostPageComponent implements OnInit {
     this.markerPostion=this.position;
   }
 
-  // Function to navigate to the profile page
-  gotoProfile(): void {
-    console.log('Going to my profile page....');
-    this.router.navigate(['/myprofilepage']);
-  }
-
-  // Function to navigate to the new post page
-  gotoNewPost(): void {
-    console.log('Going to create new post page....');
-    this.router.navigate(['/newpostpage']);
-  }
-
-   // Function to navigate to the my posts page
-   gotoMyPosts(): void {
-    console.log('Going to create new post page....');
-    this.router.navigate(['/mypostspage']);
+   //Navigation Function
+   goto(data:string){
+    this.router.navigate([data]);
   }
 
   // Function for multiple image selection

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { JwtserviceService } from 'src/app/services/jwtservice.service';
 import { Subscription } from 'rxjs';
 import { UserApiCallsService } from 'src/app/services/user-api-calls.service';
+import { PostIdCommuicationService } from 'src/app/services/post-id-commuication.service';
 
 @Component({
   selector: 'app-myposts-page',
@@ -17,7 +18,7 @@ export class MypostsPageComponent implements OnInit {
   imageData: any[] =[];
 
   //Constructor
-   constructor(private router: Router,private jwtService: JwtserviceService, private apiCall:UserApiCallsService){
+   constructor(private router: Router,private jwtService: JwtserviceService, private apiCall:UserApiCallsService,private siblingComm:PostIdCommuicationService){
   }
 
   ngOnInit(): void {
@@ -47,16 +48,18 @@ export class MypostsPageComponent implements OnInit {
     });
   }
 
-  //Function to go to profile
-  gotoProfile() : void{
-  console.log('Going to my profile page....');
-  this.router.navigate(['/myprofilepage']);
+  //Send itemID to sibling postdetailspage and then navigate to it
+  viewPostDeatils(data:string,id:number):void {
+    //Sending post ID to service
+    const ID =id.toString()
+    this.siblingComm.sendpostID(ID);
+    console.log('Sent data:',ID);
+    this.router.navigate([data]);
   }
 
-  //Function to go to post details
-  gotoPostDetails() : void{
-    console.log('Going to post details page....');
-    this.router.navigate(['/postdetailspage']);
+   //Navigation Function
+   goto(data:string){
+    this.router.navigate([data]);
   }
 
 }

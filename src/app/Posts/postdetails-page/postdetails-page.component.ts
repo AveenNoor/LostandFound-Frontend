@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { PostIdCommuicationService } from 'src/app/services/post-id-commuication.service';
 import { ItemApiCallsService } from 'src/app/services/item-api-calls.service';
 import { GetMyLocationService } from '../../services/get-my-location.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-postdetails-page',
@@ -32,7 +33,7 @@ export class PostdetailsPageComponent implements OnInit {
   observableData = '';
 
   // Constructor
-  constructor(private postIdService: PostIdCommuicationService, private cdr: ChangeDetectorRef, private apiCall1: ItemApiCallsService, private locationService: GetMyLocationService) {
+  constructor(private postIdService: PostIdCommuicationService, private cdr: ChangeDetectorRef, private apiCall1: ItemApiCallsService, private locationService: GetMyLocationService,private router:Router) {
   }
 
   // On initialize function
@@ -106,5 +107,10 @@ export class PostdetailsPageComponent implements OnInit {
         }
       );
     });
+  }
+
+  //Navigation Function
+  goto(data:string){
+    this.router.navigate([data]);
   }
 }

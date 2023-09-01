@@ -12,7 +12,7 @@ body {
     object-fit: cover;
   }
   .login-signup-container {
-    width: 25.5%;
+    width: auto;
     height: auto;
     border-radius: 0.5rem;
     background: #fff;

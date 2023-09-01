@@ -18,6 +18,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.router.navigate(['/']);
+    // this.router.navigate(['/otpverifypage']);
     // this.router.navigate(['/founditemspage'])
     // this.router.navigate(['/lostitemspage']);
     // this.router.navigate(['/newpostpage']);

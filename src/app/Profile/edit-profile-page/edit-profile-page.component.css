@@ -437,13 +437,21 @@ table {
   align-items: center;
 }
 .circle-container {
-  width: 142px;
-  height: 142px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
   overflow: hidden;
-  border-radius: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center the content vertically */
   margin: auto;
-  align-items: center;
-  /* background-color: purple; */
+  background-color: rgb(223, 222, 222);
+}
+
+.resize-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; 
 }
 
 .circle-container img{
@@ -453,6 +461,7 @@ table {
 #previewImage {
   width: 100px;
   height: 150px;
+  margin-left: -1.5%;
 }
   
 .edit-table{

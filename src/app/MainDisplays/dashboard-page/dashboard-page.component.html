@@ -17,7 +17,7 @@
               <img src="../../assets/Images/icons8-bell-50.png" />
             </div>
             <div class="logout-icon">
-              <img src="../../assets/Images/icons8-logout-50 (1).png" />
+              <img (click)="goto('')"  src="../../assets/Images/icons8-logout-50 (1).png" />
             </div>
             
             <div class="image-username-flex">
@@ -54,7 +54,7 @@
               <p (click)="goto('/myprofilepage')">My Profile</p>
             </div>
             <div class="navigation-link">
-              <img src="../../assets/Images/icons8-pin-50.png" />
+              <img (click)="goto('/saveditemspage')" src="../../assets/Images/icons8-pin-50.png" />
               <p>Saved</p>
             </div>
           </div>

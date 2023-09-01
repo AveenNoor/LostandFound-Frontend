@@ -133,8 +133,8 @@ export class LoginPageComponent implements OnInit{
 
   get isTokenValid(): boolean {
     const token = localStorage.getItem('authToken'); // Retrieve the token from storage
-    if (token) {
-      return !this.jwtHelper.isTokenExpired(token);
+    if (!this.jwtHelper.isTokenExpired(token)) {
+      return true;
     } 
     return false; // Token not found
   }

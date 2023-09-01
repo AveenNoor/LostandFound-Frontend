@@ -53,22 +53,9 @@ export class MyprofilepageComponent implements OnInit {
     );
   }
 
-  //Function to go to profile
-  gotoProfile() : void{
-    console.log('Going to my profile page....');
-    this.router.navigate(['/myprofilepage']);
-  }
-
-  //Function to go to edit profile
-  gotoEditProfile():void{
-    console.log('Going to edit page....');
-    this.router.navigate(['/editprofilepage']);
-  }
-
-  //Function to go to new post page
-  gotoNewPost() : void{
-    console.log('Going to create new post page....');
-    this.router.navigate(['/newpostpage']);
+  //Navigation Function
+  goto(data:string){
+    this.router.navigate([data]);
   }
 
 }

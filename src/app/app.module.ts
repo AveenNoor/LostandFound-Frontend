@@ -32,6 +32,7 @@ import { HeadersInterceptor } from './interceptors/headers.interceptor';
 import { FoundItemsComponent } from './MainDisplays/found-items-page/found-items.component';
 import { LostItemsComponent } from './MainDisplays/lost-items-page/lost-items.component';
 import { PostIdCommuicationService } from './services/post-id-commuication.service';
+import { SaveditemsPageComponent } from './Posts/saveditems-page/saveditems-page.component';
 
 //Get JWT token from local storage
 export function tokenGetter() {
@@ -52,7 +53,8 @@ export function tokenGetter() {
     MypostsPageComponent,
     PostdetailsPageComponent,
     FoundItemsComponent,
-    LostItemsComponent
+    LostItemsComponent,
+    SaveditemsPageComponent
   ],
   imports: [
     BrowserModule,

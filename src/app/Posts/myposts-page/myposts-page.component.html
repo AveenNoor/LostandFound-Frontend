@@ -20,7 +20,7 @@
               <img src="../../assets/Images/icons8-logout-50 (1).png" />
             </div>
             <div class="image-username-flex">
-              <img src="../../assets/Images/Ellipse 1.png" />
+              <img (click)="goto('/myprofilepage')" src="../../assets/Images/Ellipse 1.png" />
               <div class="heading-block">
                 <h6>David Parker</h6>
                 <p>@username</p>
@@ -34,23 +34,27 @@
           <div class="navigation-container">
             <div class="navigation-link">
               <img src="../../assets/Images/icons8-cross-45.png" />
-              <p>Lost Items</p>
+              <p (click)="goto('/lostitemspage')">Lost Items</p>
             </div>
             <div class="navigation-link">
               <img src="../../assets/Images/icons8-search-45.png" />
-              <p>Found Items</p>
-            </div>
-            <div class="navigation-link">
-              <img src="../../assets/Images/icons8-item-45.png" />
-              <p>My Items</p>
-            </div>
-            <div class="navigation-link">
-              <img src="../../assets/Images/icons8-create-45.png" />
-              <p>Create Posts</p>
+              <p (click)="goto('/founditemspage')">Found Items</p>
             </div>
             <div class="navigation-link">
               <img src="../../assets/Images/icons8-user-45.png" />
-              <p>My Profile</p>
+              <p (click)="goto('/mypostspage')">My Items</p>
+            </div>
+            <div class="navigation-link">
+              <img src="../../assets/Images/icons8-create-45.png" />
+              <p (click)="goto('/newpostpage')">Create Posts</p>
+            </div>
+            <div class="navigation-link">
+              <img src="../../assets/Images/icons8-user-45.png" />
+              <p (click)="goto('/myprofilepage')">My Profile</p>
+            </div>
+            <div class="navigation-link">
+              <img (click)="goto('/saveditemspage')" src="../../assets/Images/icons8-pin-50.png" />
+              <p>Saved</p>
             </div>
           </div>
         </div>
@@ -93,9 +97,9 @@
             <div class="my-post">
                 <div class="grid-container">
                   <div class="grid-item" *ngFor="let item of imageData">
-                    <div class="my-posts">
+                    <div class="my-posts" (click)="viewPostDeatils('/postdetailspage',item.id)">
                       <img [src]="item.imageUrl" alt="Item Image">
-                      <div class="post-overlay">{{ item.name }}</div>
+                      <div class="post-overlay">"{{ item.name }}"</div>
                     </div>
                   </div>
                   </div>

@@ -14,6 +14,7 @@ import { MypostsPageComponent } from './Posts/myposts-page/myposts-page.componen
 import { PostdetailsPageComponent } from './Posts/postdetails-page/postdetails-page.component';
 import { FoundItemsComponent } from './MainDisplays/found-items-page/found-items.component';
 import { LostItemsComponent } from './MainDisplays/lost-items-page/lost-items.component';
+import { SaveditemsPageComponent } from './Posts/saveditems-page/saveditems-page.component';
 
 const routes: Routes = [
   {path:'',component: LoginPageComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path:'postdetailspage',component:PostdetailsPageComponent},
   {path:'founditemspage',component:FoundItemsComponent},
   {path:'lostitemspage',component:LostItemsComponent},
+  {path:'saveditemspage',component:SaveditemsPageComponent},
   {path:'not-found', component: LoginPageComponent},
   {path:'**',redirectTo:'/not-found'}
 ];

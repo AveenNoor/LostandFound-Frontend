@@ -13,7 +13,7 @@ import { UserApiCallsService } from 'src/app/services/user-api-calls.service';
 export class EditProfilePageComponent implements OnInit {
 
   //Properties
-  previewImageUrl: string = '../../assets/Images/avatar.png'; // Default preview image
+  previewImageUrl: string = 'https://exceedinternal.azurewebsites.net//images/461fafff-aa19-4842-af9d-31133283abb7.jpg'; // Default preview image
   tokenSubscription?: Subscription;
   myObject: any = {};
 
@@ -91,16 +91,9 @@ export class EditProfilePageComponent implements OnInit {
     );
   }
 
-  //Function to go to profile
-  gotoProfile() : void{
-    console.log('Going to my profile page....');
-    this.router.navigate(['/myprofilepage']);
-  }
-
-  //Function to go to new post page
-  gotoNewPost() : void{
-    console.log('Going to create new post page....');
-    this.router.navigate(['/newpostpage']);
+  //Navigation Function
+  goto(data:string){
+    this.router.navigate([data]);
   }
 
   //Preview selected image
