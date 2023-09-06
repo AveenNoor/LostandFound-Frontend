@@ -1,5 +1,5 @@
 export const environment = {
-    production:true ,
+    production: true,
     firebase: {
         apiKey: "AIzaSyAldpHN1RWE9Vv_4UdY6AwYPlr6ltOZ_ec",
             authDomain: "lostandfound2-e3e9e.firebaseapp.com",
@@ -10,3 +10,4 @@ export const environment = {
             measurementId: "G-6TWY50430K"
         }
     }
+

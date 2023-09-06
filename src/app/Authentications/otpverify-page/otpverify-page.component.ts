@@ -3,9 +3,14 @@ import firebase from 'firebase/compat/app';
 import 'firebase/auth'
 import 'firebase/firestore'
 import {Router} from '@angular/router';
+
+
+import { HttpClient } from '@angular/common/http';
+
 import { Subscription } from 'rxjs';
 import { JwtserviceService } from 'src/app/services/jwtservice.service';
 import { UserApiCallsService } from 'src/app/services/user-api-calls.service';
+
 
 @Component({
   selector: 'app-otpverify-page',
@@ -16,9 +21,11 @@ import { UserApiCallsService } from 'src/app/services/user-api-calls.service';
 export class OtpverifyPageComponent implements OnInit {
 
   //Properties
+
   previewImageUrl: string = 'https://exceedinternal.azurewebsites.net//images/461fafff-aa19-4842-af9d-31133283abb7.jpg'; // Default preview image
    otp!:string;
    formdata: FormData= new FormData();
+
    verify :any;
    tokenSubscription?: Subscription;
    config = {
@@ -32,13 +39,29 @@ export class OtpverifyPageComponent implements OnInit {
        height: '40px',
      },
    };
+   
 
   //Constructor
+
   constructor(private el: ElementRef,private apiCall:UserApiCallsService,private router :Router,private jwtService: JwtserviceService){
+
   }
 
+  addUserAPICall(formData: FormData) {
+    return this.http.post('https://exceedinternal.azurewebsites.net/api/User/AddUser', formData);
+  }
   //ngoninit function
   ngOnInit(){
+    this.tokenSubscription = this.jwtService.getDecodedToken().subscribe(
+      (tokenData) => {
+        console.log(tokenData);
+        this.TokenData= tokenData
+      },
+      (error) => {
+        console.error('Error fetching token:', error);
+      }
+    );
+
     this.verify=JSON.parse(localStorage.getItem('verificationId') || '{}');
     console.log(this.verify);
   }
@@ -74,6 +97,8 @@ export class OtpverifyPageComponent implements OnInit {
     this.otp=otpcode;
   }
 
+
+ 
   async handleClick(){
     var credentials = firebase.auth.PhoneAuthProvider.credential(this.verify,this.otp);
     firebase.auth().signInWithCredential(credentials).then(async (response)=>{
@@ -101,3 +126,4 @@ export class OtpverifyPageComponent implements OnInit {
     
   }
 }
+

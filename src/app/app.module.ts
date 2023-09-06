@@ -13,6 +13,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {GoogleMapsModule} from '@angular/google-maps';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { JwtModule} from '@auth0/angular-jwt';
+import { NgToastModule } from 'ng-angular-popup';
+import { MatDialogModule } from '@angular/material/dialog';
+
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 //Components
@@ -33,6 +37,8 @@ import { FoundItemsComponent } from './MainDisplays/found-items-page/found-items
 import { LostItemsComponent } from './MainDisplays/lost-items-page/lost-items.component';
 import { PostIdCommuicationService } from './services/post-id-commuication.service';
 import { SaveditemsPageComponent } from './Posts/saveditems-page/saveditems-page.component';
+import { PopupcomponentComponent } from './popupcomponent/popupcomponent.component';
+
 
 //Get JWT token from local storage
 export function tokenGetter() {
@@ -54,7 +60,8 @@ export function tokenGetter() {
     PostdetailsPageComponent,
     FoundItemsComponent,
     LostItemsComponent,
-    SaveditemsPageComponent
+    SaveditemsPageComponent,
+    PopupcomponentComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +75,9 @@ export function tokenGetter() {
     MatGridListModule,
     GoogleMapsModule,
     NgbModule,
+    NgToastModule,
     HttpClientModule,
+    MatDialogModule,
     JwtModule.forRoot({
       config: {
         tokenGetter,
