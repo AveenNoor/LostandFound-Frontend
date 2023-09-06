@@ -15,6 +15,11 @@ export class UserApiCallsService {
   getUserAPICall() {
     return this.http.get<any>('https://exceedinternal.azurewebsites.net/api/User/GetUser');
   }
+  
+  //Post new user API call
+  postNewUserAPICall(data:any){
+    return this.http.post('https://exceedinternal.azurewebsites.net/api/User/UserSignup',data);
+  }
 
   //Get user data by ID
   getUserByIdAPICall(userId:string) {

@@ -13,7 +13,7 @@ import { UserApiCallsService } from 'src/app/services/user-api-calls.service';
 export class EditProfilePageComponent implements OnInit {
 
   //Properties
-  previewImageUrl: string = 'https://exceedinternal.azurewebsites.net//images/461fafff-aa19-4842-af9d-31133283abb7.jpg'; // Default preview image
+  previewImageUrl: string = 'https://exceedinternal.azurewebsites.net/dummy/461fafff-aa19-4842-af9d-31133283abb7.jpg'; // Default preview image
   tokenSubscription?: Subscription;
   myObject: any = {};
 
@@ -44,20 +44,20 @@ export class EditProfilePageComponent implements OnInit {
   }
 
   //Constructor
-  constructor(private router:Router,private el: ElementRef,private jwtService: JwtserviceService, private apiCall:UserApiCallsService){}
-  
-  //Initializa function
-  ngOnInit(): void {
-    //Code for subscribing to service to get username and ID from jwt token
+  constructor(private router:Router,private el: ElementRef,private jwtService: JwtserviceService, private apiCall:UserApiCallsService){
     this.tokenSubscription = this.jwtService.getDecodedToken().subscribe(
-      (tokenData) => {
-        console.log(tokenData);
+      (tokenData) => {console.log(tokenData);
       },
       (error) => {
         console.error('Error fetching token:', error);
       }
     );
-
+  }
+  
+  //Initializa function
+  ngOnInit(): void {
+    //Code for subscribing to service to get username and ID from jwt token
+      
     //Get current users profile data
     this.getInitialuserData();
   }

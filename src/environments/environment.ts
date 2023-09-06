@@ -1,11 +1,12 @@
 export const environment = {
     production:false ,
     firebase: {
-        apiKey: "AIzaSyALPwr6h1fbCfXnc2R8RIL73-mrDzdL_dA",
-        authDomain: "lostandfound-161d8.firebaseapp.com",
-        projectId: "lostandfound-161d8",
-        storageBucket: "lostandfound-161d8.appspot.com",
-        messagingSenderId: "59582013943",
-        appId: "1:59582013943:web:1ea3aa1315d4ebbd28cef2"
+        apiKey: "AIzaSyAldpHN1RWE9Vv_4UdY6AwYPlr6ltOZ_ec",
+        authDomain: "lostandfound2-e3e9e.firebaseapp.com",
+        projectId: "lostandfound2-e3e9e",
+        storageBucket: "lostandfound2-e3e9e.appspot.com",
+        messagingSenderId: "837054571024",
+        appId: "1:837054571024:web:ca24c5182d7c5d5fcc6095",
+        measurementId: "G-6TWY50430K"
     }
 };

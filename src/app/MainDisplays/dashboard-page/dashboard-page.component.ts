@@ -27,6 +27,7 @@ export class DashboardPageComponent {
     this.tokenSubscription = this.jwtService.getDecodedToken().subscribe(
       (tokenData) => {
         console.log(tokenData);
+        console.log('UserID is...',tokenData.user_id);
       },
       (error) => {
         console.error('Error fetching token:', error);
@@ -34,9 +35,9 @@ export class DashboardPageComponent {
     );
 
     //Get current users data
-    this.apiCall.getUserAPICall().subscribe((response)=>{
-      console.log("user response data",response)
-    })
+    // this.apiCall.getUserAPICall().subscribe((response)=>{
+    //   console.log("user response data",response)
+    // })
   }
 
   //Navigation Function
