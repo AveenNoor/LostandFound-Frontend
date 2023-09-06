@@ -89,21 +89,11 @@ export class OtpverifyPageComponent implements OnInit {
   
       // Checking if the user already exists or is signing up for the first time
       if (response.additionalUserInfo?.isNewUser == true) {
-        const formData = new FormData();
-        formData.append("userID", this.TokenData.user_id);
-        formData.append("phoneNumber", this.TokenData.phone_number);
-        console.log('Form Data:', formData);
-  
-        // Call the addUserAPICall method here
-        this.userApi.addUserAPICall(formData).subscribe((apiResponse) => {
-          console.log("New user created...", apiResponse);
-          
+    
           // After making the API call, navigate to the desired page
           this.router.navigate(['/myprofilepage']);
-        }, (error) => {
-          console.error('Error adding user:', error);
-        });
-      } else if (response.additionalUserInfo?.isNewUser == false) {
+        }
+      else if (response.additionalUserInfo?.isNewUser == false) {
         this.router.navigate(['/dashboardpage']);
       }
     }).catch((error) => {

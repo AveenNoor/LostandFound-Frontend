@@ -45,9 +45,5 @@ export class UserApiCallsService {
   }
   
   
-  
-  addUserAPICall(data: any) {
-    return this.http.post('https://exceedinternal.azurewebsites.net/api/User/AddUser', data);
-  }
 
 }
