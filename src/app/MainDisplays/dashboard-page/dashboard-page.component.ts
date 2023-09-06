@@ -17,6 +17,7 @@ export class DashboardPageComponent {
   tokenSubscription?: Subscription;
   isHeartToggled : boolean = false;
   isSaveToggled :boolean = false;
+  term:any;
 
   //constructor
   constructor(private router: Router,private jwtService: JwtserviceService, private apiCall:UserApiCallsService){

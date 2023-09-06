@@ -40,6 +40,7 @@ export class MyprofilepageComponent implements OnInit {
           userImage: response.photoUrl,
           userName: response.name,
           userPhone: response.phoneNumber,
+          userAddress:response.address,
           userCommunity: [], // Initialize an empty array
         };
 

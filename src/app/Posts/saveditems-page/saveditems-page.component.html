@@ -1,1 +1,112 @@
-<p>saveditems-page works!</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="lostandfound-homepage">
+      <div class="header-container">
+        <div class="header-flexbox">
+          <div class="logoimg">
+            <img src="../../assets/Images/Group 2.png" />
+          </div>
+          <div class="items-flexbox">
+            <div class="notification-icon">
+              <img src="../../assets/Images/icons8-bell-50.png" />
+            </div>
+            <div class="logout-icon">
+              <img src="../../assets/Images/icons8-logout-50 (1).png" />
+            </div>
+            <div class="image-username-flex">
+              <img (click)="goto('/myprofilepage')" src="../../assets/Images/Ellipse 1.png" />
+              <div class="heading-block">
+                <h6>David Parker</h6>
+                <p>@username</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="inner-content-container">
+        <div class="side-container">
+          <div class="navigation-container">
+            <div class="navigation-link">
+              <img src="../../assets/Images/icons8-cross-45.png" />
+              <p (click)="goto('/lostitemspage')">Lost Items</p>
+            </div>
+            <div class="navigation-link">
+              <img src="../../assets/Images/icons8-search-45.png" />
+              <p (click)="goto('/founditemspage')">Found Items</p>
+            </div>
+            <div class="navigation-link">
+              <img src="../../assets/Images/icons8-user-45.png" />
+              <p (click)="goto('/mypostspage')">My Items</p>
+            </div>
+            <div class="navigation-link">
+              <img src="../../assets/Images/icons8-create-45.png" />
+              <p (click)="goto('/newpostpage')">Create Posts</p>
+            </div>
+            <div class="navigation-link">
+              <img src="../../assets/Images/icons8-user-45.png" />
+              <p (click)="goto('/myprofilepage')">My Profile</p>
+            </div>
+            <div (click)="goto('/saveditemspage')" class="navigation-link">
+              <img src="../../assets/Images/icons8-pin-50.png" />
+              <p>Saved</p>
+            </div>
+          </div>
+        </div>
+        <div class="inner-content-div">
+          <div class="design-container">
+            <div class="items-div">
+              <img src="../../assets/Images/Group 10.png" />
+              <div class="">
+                <p>Lost Items</p>
+                <p class="number">217</p>
+              </div>
+            </div>
+            <div class="items-div">
+              <img src="../../assets/Images/Group 11.png" />
+              <div class="">
+                <p>Found Items</p>
+                <p class="number">186</p>
+              </div>
+            </div>
+            <div class="items-div">
+              <img src="../../assets/Images/Group 12.png" />
+              <div class="">
+                <p>Items Delivered</p>
+                <p class="number">20</p>
+              </div>
+            </div>
+            <div class="items-div">
+              <img
+                src="../../assets/Images/closed-box-icon-isolated-background-flat-pictogram-business-marketing-internet-flat-style_599062-3372 1.png"
+              />
+              <div class="">
+                <p>Total Posts</p>
+                <p class="number">230</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Details of post component -->
+          <div class="post-side-container">
+            <div class="my-post">
+                <div class="grid-container">
+                  <div class="grid-item" *ngFor="let item of imageData">
+                    <div class="my-posts" (click)="viewPostDeatils('/postdetailspage',item.id)">
+                      <img [src]="item.imageUrl" alt="Item Image">
+                      <div class="post-overlay">"{{ item.name }}"</div>
+                    </div>
+                  </div>
+                  </div>
+                 </div>
+            </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

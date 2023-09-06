@@ -15,9 +15,8 @@ export class FoundItemsComponent {
   
   //Properties
   tokenSubscription?: Subscription;
-  isHeartToggled : boolean = false;
-  isSaveToggled :boolean = false;
   myObject: any = {};
+  item:any;
 
   //constructor
   constructor(private router: Router,private jwtService: JwtserviceService, private apiCall:UserApiCallsService, private apiCall1:ItemApiCallsService, private siblingComm:PostIdCommuicationService){
@@ -37,6 +36,7 @@ export class FoundItemsComponent {
     this.getUserData();
     //Function to get all found items
     this.getFoundItems();
+
   }
 
   //Function to get current user data
@@ -47,7 +47,7 @@ export class FoundItemsComponent {
   }
 
   //Function to get all found items
-  getFoundItems(): void {
+  getFoundItems():void{
     this.apiCall1.getFoundItemsAPICall().subscribe(
       (response: Record<string, any>) => { 
         console.log("found items response data", response);
@@ -61,7 +61,8 @@ export class FoundItemsComponent {
               name: item.name,
               description: item.description,
               imageUrls: item.imageUrls.$values, // Extract imageUrls
-              isHeartToggled: false
+              isHeartToggled: item.likedInfo,
+              isSaved:item.savedPostInfo
             };
           }),
         };
@@ -72,6 +73,7 @@ export class FoundItemsComponent {
       }
     );
   }
+
 
   //Navigation Function
   goto(data:string){
@@ -90,11 +92,33 @@ export class FoundItemsComponent {
   //Toggle heart
   toggleHeart(item: any): void {
     item.isHeartToggled = !item.isHeartToggled;
+    if(item.isHeartToggled==true){
+      const object={
+        itemid:item.id
+      }
+      this.apiCall1.postLikedItemsAPICall(object).subscribe((response)=>{
+        console.log('Posts Likes Updated....',response);
+      })
+    }
   }
 
   //Toggle save
-  toggleSave():void {
-    this.isSaveToggled = !this.isSaveToggled;
+  toggleSave(item: any): void {
+    item.isSaved = !item.isSaved;
+    if (item.isSaved) {
+      // Save Post API Call
+      const object = {
+        itemid: item.id
+      };
+      this.apiCall1.postSavedItemsAPICall(object).subscribe((response) => {
+        console.log('Saved post....', response);
+      });
+    } else {
+      // Remove from save posts call
+      this.apiCall1.removeSavedPostAPICall(item.id).subscribe((response) => {
+        console.log('Saved post removed....', response);
+      });
+    }
   }
-
+  
 }

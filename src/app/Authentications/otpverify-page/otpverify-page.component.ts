@@ -47,15 +47,11 @@ export class OtpverifyPageComponent implements OnInit {
 
   }
 
-  addUserAPICall(formData: FormData) {
-    return this.http.post('https://exceedinternal.azurewebsites.net/api/User/AddUser', formData);
-  }
   //ngoninit function
   ngOnInit(){
     this.tokenSubscription = this.jwtService.getDecodedToken().subscribe(
       (tokenData) => {
         console.log(tokenData);
-        this.TokenData= tokenData
       },
       (error) => {
         console.error('Error fetching token:', error);

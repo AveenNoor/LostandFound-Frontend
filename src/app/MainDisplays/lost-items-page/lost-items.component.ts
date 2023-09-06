@@ -18,6 +18,7 @@ export class LostItemsComponent {
    isHeartToggled : boolean = false;
    isSaveToggled :boolean = false;
    myObject: any = {};
+   item: any;
  
    //constructor
    constructor(private router: Router,private jwtService: JwtserviceService, private apiCall:UserApiCallsService, private apiCall1:ItemApiCallsService, private siblingComm:PostIdCommuicationService){

@@ -1,6 +1,6 @@
 import { Component,OnInit,ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl,FormGroup,Validators } from '@angular/forms';
+import { FormControl,FormGroup,Validators,FormArray } from '@angular/forms';
 import { JwtserviceService } from 'src/app/services/jwtservice.service';
 import { Subscription } from 'rxjs';
 import { UserApiCallsService } from 'src/app/services/user-api-calls.service';
@@ -23,7 +23,7 @@ export class EditProfilePageComponent implements OnInit {
     editName : new FormControl('',[]),
     editNumber : new FormControl('',[Validators.pattern("\\+92\\d{10}")]),
     editAddress : new FormControl('',[Validators.minLength(5)]),
-    editCommunity : new FormControl('',[])
+    editCommunity: new FormControl(),
   })
 
   //Getter functions for form controls
@@ -72,8 +72,10 @@ export class EditProfilePageComponent implements OnInit {
           userImage: response.photoUrl,
           userName: response.name,
           userPhone: response.phoneNumber,
+          userAddress: response.address,
           userCommunity: [], // Initialize an empty array
         };
+        console.log(this.myObject);
         if (response.communityNames && Array.isArray(response.communityNames.$values)) {
           this.myObject.userCommunity = response.communityNames.$values;
         }
@@ -96,6 +98,17 @@ export class EditProfilePageComponent implements OnInit {
     this.router.navigate([data]);
   }
 
+  //Add multple values to community array
+  addCommunity() {
+    const newCommunityControl = new FormControl('');
+    (this.editProfForm.get('editCommunity') as FormArray).push(newCommunityControl);
+  }
+  
+  //Remove multple values to community array
+  removeCommunity(index: number) {
+    (this.editProfForm.get('editCommunity') as FormArray).removeAt(index);
+  }
+
   //Preview selected image
   onImageSelected(event: Event) {
     const inputElement = this.el.nativeElement.querySelector('#imageInput') as HTMLInputElement;
@@ -110,16 +123,14 @@ export class EditProfilePageComponent implements OnInit {
   //Converting form to formdata
   getFormDataFromForm() {
     const formData = new FormData();
-    formData.append('Name', this.editNameF?.value);
+    formData.append('Username', this.editNameF?.value);
     formData.append('Number', this.editNumberF?.value);
     formData.append('Address', this.editAddressF?.value);
-    formData.append('Community', this.editCommunityF?.value);
-    const selectedImage = this.editProfForm.get('editImage')?.value;
-    if (selectedImage) {
-      formData.append('ImageFile', selectedImage, 'profile-image.png');
-    }
+    formData.append('Community[]', this.editCommunityF?.value);
+  
     return formData;
   }
+  
 
   // On form submission function
   onSubmission(): void {

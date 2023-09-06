@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 //Libarries
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { NgOtpInputModule } from 'ng-otp-input';
@@ -15,7 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { JwtModule} from '@auth0/angular-jwt';
 import { NgToastModule } from 'ng-angular-popup';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -38,6 +38,7 @@ import { LostItemsComponent } from './MainDisplays/lost-items-page/lost-items.co
 import { PostIdCommuicationService } from './services/post-id-commuication.service';
 import { SaveditemsPageComponent } from './Posts/saveditems-page/saveditems-page.component';
 import { PopupcomponentComponent } from './popupcomponent/popupcomponent.component';
+import { SearchPipe } from './search.pipe';
 
 
 //Get JWT token from local storage
@@ -61,12 +62,14 @@ export function tokenGetter() {
     FoundItemsComponent,
     LostItemsComponent,
     SaveditemsPageComponent,
-    PopupcomponentComponent
+    PopupcomponentComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     AngularFireModule,
     AngularFireDatabaseModule,
     NgOtpInputModule,

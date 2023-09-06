@@ -97,12 +97,16 @@
           <div class="post-side-container">
             <div class="my-dashboard">
               <div class="my-dashborad-post">
-                <div class="my-post" *ngFor="let item of myObject.$values">
+                <div class="search-container">
+                  <input type="text" class="search-input" placeholder="Search..." [(ngModel)]="item">
+                  <button class="search-button"><img src="../../assets/Images/icons8-search-50.png"></button>
+                </div>
+                <div class="my-post" *ngFor="let item of myObject.$values| search:item">
                    <div class="my-profile-detail">
                       <img src="../../assets/Images/Ellipse 4.png">
                       <div class="my=profile-content">
                           <p>{{item.username}}</p>
-                          <p class="details-username">@{{item.username}}</p>
+                          <p class="details-username">@LostItem</p>
                       </div>
                    </div>
                    <div class="my-feed">
@@ -127,7 +131,7 @@
                               </div>
                             </div>
                           </div>
-                          <p class="post-descrp">{{item.description}}</p>
+                          <p class="post-descrp"> <span style="font-weight: bold;">{{item.name}}: </span>{{item.description}}</p>
                         </div>
                     </div>
                   </div>
@@ -135,7 +139,7 @@
               </div>
               <div class="blue-design-div">
                 <img src="../../assets/Images/blue.png">
-                <h1>LOST I123TEMS...</h1>
+                <h1>LOST ITEMS...</h1>
               </div>
             </div>  
           </div>

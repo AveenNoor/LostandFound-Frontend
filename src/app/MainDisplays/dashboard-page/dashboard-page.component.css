@@ -278,19 +278,34 @@ p {
   font-weight: 400;
   line-height: normal;
 }
-.measurements input, .input-container input, .search-container input{
+.measurements input, .input-container input{
   max-width: 100%;
   border-radius: 0.875rem;
   border: 1px solid #c3c3c3;
   background: #fff;
   padding: 1.042vw;
 }
+
+.search-container input{
+  max-width: 100%;
+  border-radius: 0.875rem;
+  border: none;
+  background: #fff;
+  padding: 1.042vw;
+}
 .search-container input{
   border-radius: 0.4rem 0rem 0rem 0.4rem;
-  width: 80%;
+  width: 90%;
 }
 .search-container{
   display: flex;
+  border-radius: 0.4rem 0rem 0rem 0.4rem;
+
+  margin-top: 4%;
+  margin-left: 6%;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  margin-right: 5%;
+  height: 40px;
 }
 .input-container{
   display: flex;
@@ -416,6 +431,10 @@ ngb-carousel img{
   border-radius: 5px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 
+}
+
+.search-input{
+  background-color: purple;
 }
 
 .post-descrp{
