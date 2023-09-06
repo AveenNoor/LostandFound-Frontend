@@ -43,4 +43,11 @@ export class UserApiCallsService {
   getUserItems() {
     return this.http.get<any>('https://exceedinternal.azurewebsites.net/api/Items/GetUserItems');
   }
+  
+  
+  
+  addUserAPICall(data: any) {
+    return this.http.post('https://exceedinternal.azurewebsites.net/api/User/AddUser', data);
+  }
+
 }

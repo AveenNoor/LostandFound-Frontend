@@ -3,15 +3,21 @@ import { Router } from '@angular/router';
 import {FormGroup, FormControl,Validators} from '@angular/forms';
 import firebase from 'firebase/compat/app';
 import 'firebase/auth'
-import 'firebase/firestore'
+import { NgToastService } from 'ng-angular-popup';
 
+
+
+import { MatDialog } from '@angular/material/dialog';
+import { PopupcomponentComponent } from 'src/app/popupcomponent/popupcomponent.component';
+import 'firebase/compat/firestore';
 var config = {
-  apiKey: "AIzaSyALPwr6h1fbCfXnc2R8RIL73-mrDzdL_dA",
-  authDomain: "lostandfound-161d8.firebaseapp.com",
-  projectId: "lostandfound-161d8",
-  storageBucket: "lostandfound-161d8.appspot.com",
-  messagingSenderId: "59582013943",
-  appId: "1:59582013943:web:1ea3aa1315d4ebbd28cef2"
+  apiKey: "AIzaSyAldpHN1RWE9Vv_4UdY6AwYPlr6ltOZ_ec",
+  authDomain: "lostandfound2-e3e9e.firebaseapp.com",
+  projectId: "lostandfound2-e3e9e",
+  storageBucket: "lostandfound2-e3e9e.appspot.com",
+  messagingSenderId: "837054571024",
+  appId: "1:837054571024:web:ca24c5182d7c5d5fcc6095",
+  measurementId: "G-6TWY50430K"
 }
 
 @Component({
@@ -38,7 +44,7 @@ export class SignupPageComponent implements OnInit {
   }
 
   //Constructor
-  constructor(private router:Router){}
+  constructor(private router:Router, private dailog : MatDialog, private notification : NgToastService){}
 
   //Oninit function
   ngOnInit(){
@@ -63,35 +69,62 @@ export class SignupPageComponent implements OnInit {
   }
 
   //Fucntion to generate an OTP and then navigate to otp page
-   getOTP(){
-    var phoneNumber=this.userPhoneF?.value;
-    this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-      'sign-in-button',
-      {
-        size: 'invisible',
+  getOTP() {
+    const phoneNumber = this.userPhoneF?.value;
+    const phoneNumbersCollection = firebase.firestore().collection('users');
+    const query = phoneNumbersCollection.where('phoneNumber', '==', phoneNumber);
+  
+    query.get().then((querySnapshot) => {
+      if (querySnapshot.empty) {
+        // Phone number is not registered, generate OTP and navigate to OTP verification page
+        this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+          'sign-in-button',
+          {
+            size: 'invisible',
+          }
+        );
+        console.log(this.reCaptchaVerifier);
+        console.log(phoneNumber);
+        firebase
+          .auth()
+          .signInWithPhoneNumber(phoneNumber, this.reCaptchaVerifier)
+          .then((confirmationResult) => {
+            console.log(confirmationResult);
+            this.notification.success({detail:"SUCCESS",summary:'OTP Sent Successfully', position:'topCenter'});
+
+            localStorage.setItem(
+              'verificationId',
+              JSON.stringify(confirmationResult.verificationId)
+            );
+  
+            // Add custom instructions to the OTP verification page
+            const customInstructions = 'Please enter the OTP code sent to your phone number.';
+  
+            // Pass the custom instructions as query parameter to the OTP verification page
+            this.router.navigate(['/otpverifypage'], { queryParams: { instructions: customInstructions } });
+          })
+          .catch((error) => {
+            console.log(error.message);
+            alert(error.message);
+            setTimeout(() => {
+              window.location.reload();
+            }, 5000);
+          });
+      } else {
+        // Phone number is already registered, show popup message
+        const dialogRef = this.dailog.open(PopupcomponentComponent, {
+          data: { message: 'Phone number is already registered' },
+        });
+  
+        dialogRef.afterClosed().subscribe((result) => {
+          // Handle dialog close event if needed
+        });
       }
-    );
-    console.log(this.reCaptchaVerifier);
-    console.log(phoneNumber);
-    firebase
-    .auth()
-    .signInWithPhoneNumber(phoneNumber, this.reCaptchaVerifier)
-    .then((confirmationResult) => {
-      console.log(confirmationResult);
-      localStorage.setItem(
-        'verificationId',
-        JSON.stringify(confirmationResult.verificationId)
-      );
-      this.router.navigate(['/otpverifypage']);
-    })
-    .catch((error) => {
-      console.log(error.message);
-      alert(error.message);
-      setTimeout(() => {
-        window.location.reload();
-      }, 5000);
+    }).catch((error) => {
+      console.error('Error checking phone number in Firestore:', error);
     });
-  } 
+  }
+
 
   //Phone number country code
   setupPhoneInput(): void {

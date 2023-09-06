@@ -28,6 +28,7 @@
     "bootstrap": "^5.3.1",
     "firebase": "^9.23.0",
     "jwt-decode": "^3.1.2",
+    "ng-angular-popup": "^0.4.7",
     "ng-mask": "^3.1.1",
     "ng-otp-input": "^1.9.2",
     "ngx-mask": "^13.1.15",
