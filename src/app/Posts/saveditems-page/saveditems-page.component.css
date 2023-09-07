@@ -31,9 +31,7 @@ body {
     padding-top: 32%;
     cursor: pointer;
   }
-  .image-username-flex img {
-    width: 32%;
-  }
+  
   .image-username-flex {
     display: flex;
     gap: 1vw;
