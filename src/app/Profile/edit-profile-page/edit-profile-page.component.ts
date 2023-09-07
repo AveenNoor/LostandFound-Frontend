@@ -16,6 +16,10 @@ export class EditProfilePageComponent implements OnInit {
   previewImageUrl: string = 'https://exceedinternal.azurewebsites.net/dummy/461fafff-aa19-4842-af9d-31133283abb7.jpg'; // Default preview image
   tokenSubscription?: Subscription;
   myObject: any = {};
+  useObject :any={
+    name:'',
+    photoUrl:''
+  };
 
   //EditProfForm
   editProfForm : FormGroup = new FormGroup ({
@@ -43,6 +47,10 @@ export class EditProfilePageComponent implements OnInit {
     return this.editProfForm.get('editCommunity');
   }
 
+  get editImageF(){
+    return this.editProfForm.get('editImage');
+  }
+
   //Constructor
   constructor(private router:Router,private el: ElementRef,private jwtService: JwtserviceService, private apiCall:UserApiCallsService){
     this.tokenSubscription = this.jwtService.getDecodedToken().subscribe(
@@ -60,6 +68,17 @@ export class EditProfilePageComponent implements OnInit {
       
     //Get current users profile data
     this.getInitialuserData();
+    this.getUserInfoAPICall();
+  }
+
+  //Function to get current user data
+  //Get user information details 
+  getUserInfoAPICall():void{
+    this.apiCall.getUserAPICall().subscribe((response)=>{
+      console.log('UserInfo for dashboard is..',response);
+      this.useObject.name= response.name,
+      this.useObject.photoUrl= response.photoUrl
+    })
   }
 
   getInitialuserData(): void {
@@ -117,6 +136,7 @@ export class EditProfilePageComponent implements OnInit {
       const objectUrl = URL.createObjectURL(selectedFile);
       this.editProfForm.get('editImage')?.setValue(selectedFile); // Set the selected file as the value
       this.previewImageUrl = objectUrl;
+      console.log(this.previewImageUrl);
     }
   }
 
@@ -126,8 +146,17 @@ export class EditProfilePageComponent implements OnInit {
     formData.append('Username', this.editNameF?.value);
     formData.append('Number', this.editNumberF?.value);
     formData.append('Address', this.editAddressF?.value);
-    formData.append('Community[]', this.editCommunityF?.value);
-  
+    // formData.append('Community[]', this.editCommunityF?.value);  
+    formData.append('Community[0].CommunityName', this.editCommunityF?.value)
+    formData.append('imageFile',this.editImageF?.value);
+    // Create an empty object to hold key-value pairs
+    const formDataObject: { [key: string]: any } = {};
+    // Iterate over the keys in FormData and add them to the object
+    formData.forEach((value, key) => {
+      formDataObject[key] = value;
+    });
+    // Display the FormData contents as an object in the console
+    console.log(formDataObject);
     return formData;
   }
   

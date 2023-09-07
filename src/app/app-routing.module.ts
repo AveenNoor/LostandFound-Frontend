@@ -15,6 +15,7 @@ import { PostdetailsPageComponent } from './Posts/postdetails-page/postdetails-p
 import { FoundItemsComponent } from './MainDisplays/found-items-page/found-items.component';
 import { LostItemsComponent } from './MainDisplays/lost-items-page/lost-items.component';
 import { SaveditemsPageComponent } from './Posts/saveditems-page/saveditems-page.component';
+import { FooterComponent } from './MainDisplays/footer/footer.component';
 
 const routes: Routes = [
   {path:'',component: LoginPageComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path:'postdetailspage',component:PostdetailsPageComponent},
   {path:'founditemspage',component:FoundItemsComponent},
   {path:'lostitemspage',component:LostItemsComponent},
+  {path:'footer',component:FooterComponent},
   {path:'saveditemspage',component:SaveditemsPageComponent},
   {path:'not-found', component: LoginPageComponent},
   {path:'**',redirectTo:'/not-found'}

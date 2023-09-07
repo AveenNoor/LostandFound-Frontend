@@ -20,9 +20,11 @@
               <img src="../../assets/Images/icons8-logout-50 (1).png" />
             </div>
             <div class="image-username-flex">
-              <img src="../../assets/Images/Ellipse 1.png" />
-              <div class="heading-block">
-                <h6>David Parker</h6>
+              <div class="circular-image-container" (click)="goto('/myprofilepage')">
+                <img src="{{ useObject.photoUrl }}" alt="User Profile Image" class="circular-image">
+              </div>
+              <div class="heading-block">             
+                  <h6>{{useObject.name}}</h6>
                 <p>@username</p>
               </div>
             </div>

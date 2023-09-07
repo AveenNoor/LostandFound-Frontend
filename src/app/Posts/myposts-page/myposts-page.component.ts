@@ -16,6 +16,10 @@ export class MypostsPageComponent implements OnInit {
   tokenSubscription?: Subscription;
   myItemsdata : any[] =[];
   imageData: any[] =[];
+  useObject :any={
+    name:'',
+    photoUrl:''
+  };
 
   //Constructor
    constructor(private router: Router,private jwtService: JwtserviceService, private apiCall:UserApiCallsService,private siblingComm:PostIdCommuicationService){
@@ -31,7 +35,6 @@ export class MypostsPageComponent implements OnInit {
         console.error('Error fetching token:', error);
       }
     );
-
     //Get current users data
     this.apiCall.getUserItems().subscribe((response: any) => {
       // Extract the items thats is the values array from the response
@@ -46,6 +49,17 @@ export class MypostsPageComponent implements OnInit {
     (error) => {
       console.error('Error fetching items:', error);
     });
+    this.getUserInfoAPICall();
+  }
+
+  //Function to get current user data
+  //Get user information details 
+  getUserInfoAPICall():void{
+    this.apiCall.getUserAPICall().subscribe((response)=>{
+      console.log('UserInfo for dashboard is..',response);
+      this.useObject.name= response.name,
+      this.useObject.photoUrl= response.photoUrl
+    })
   }
 
   //Send itemID to sibling postdetailspage and then navigate to it

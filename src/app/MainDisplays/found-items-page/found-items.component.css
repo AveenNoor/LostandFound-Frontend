@@ -41,8 +41,30 @@ body {
   .heading-block {
     padding-top: 8%;
   }
+  .circular-image-container {
+    width: 50px; /* Set the width of the circular container */
+    height: 50px; /* Set the height of the circular container */
+    border-radius: 50%; /* Create a circular shape by setting border-radius to 50% */
+    overflow: hidden; /* Hide any image content outside the circular container */
+    cursor: pointer; /* Add a pointer cursor for interaction */
+  }
+  .circular-image-container1 {
+    height:60px;
+    width:60px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgb(223, 222, 222);
+  }
+  
+  .circular-image {
+    width: 100%; /* Make the image fill the circular container */
+    height: 100%; /* Make the image fill the circular container */
+    object-fit: cover; /* Maintain aspect ratio and cover the circular area */
+  }
+  
   .heading-block h6 {
     color: #000;
+    margin-top: 5px;
     font-family: "Barlow", sans-serif;
     font-size: 0.938vw;
     font-style: normal;
@@ -139,9 +161,7 @@ body {
     gap: 1vw;
     align-items: center;
   }
-  .my-profile-detail img {
-    width: 11%;
-  }
+
   .my-profile-detail p {
     color: #000;
     font-family: "Barlow", sans-serif;

@@ -20,10 +20,12 @@
               <img src="../../assets/Images/icons8-logout-50 (1).png" />
             </div>
             <div class="image-username-flex">
-              <img (click)="goto('/myprofilepage')" src="../../assets/Images/Ellipse 1.png" />
-              <div class="heading-block">
-                  <h6>David Parker</h6>
-                  <p>@username</p>
+              <div class="circular-image-container" (click)="goto('/myprofilepage')">
+                <img src="{{ useObject.photoUrl }}" alt="User Profile Image" class="circular-image">
+              </div>
+              <div class="heading-block">             
+                  <h6>{{useObject.name}}</h6>
+                <p>@username</p>
               </div>
             </div>
           </div>
@@ -158,6 +160,7 @@
           </div>
         </div>
       </div>
+      <app-footer></app-footer>
     </section>
   </body>
 </html>

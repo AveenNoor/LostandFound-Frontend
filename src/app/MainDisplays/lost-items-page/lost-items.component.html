@@ -21,9 +21,11 @@
             </div>
             
             <div class="image-username-flex">
-              <img (click)="goto('/myprofilepage')" src="../../assets/Images/Ellipse 1.png" />
+              <div class="circular-image-container" (click)="goto('/myprofilepage')">
+                <img src="{{ useObject.photoUrl }}" alt="User Profile Image" class="circular-image">
+              </div>
               <div class="heading-block">             
-                  <h6>David Parker</h6>
+                  <h6>{{useObject.name}}</h6>
                 <p>@username</p>
               </div>
             </div>
@@ -103,7 +105,9 @@
                 </div>
                 <div class="my-post" *ngFor="let item of myObject.$values| search:item">
                    <div class="my-profile-detail">
-                      <img src="../../assets/Images/Ellipse 4.png">
+                    <div class="circular-image-container1">
+                      <img [src]="item.userImage">
+                    </div>
                       <div class="my=profile-content">
                           <p>{{item.username}}</p>
                           <p class="details-username">@LostItem</p>
@@ -127,7 +131,7 @@
                               </div>
                               <div class="column">
                                 <img (click)="viewPostDeatils('/postdetailspage',item.id)" src="../../assets/Images/info.png">
-                                <img style="margin-left: 0px; margin-right: -0px;" [src]="isSaveToggled ? '../../assets/Images/save-instagram - Copy.png' : '../../assets/Images/save-instagram.png'" (click)="toggleSave()">
+                                <img style="margin-left: 0px; margin-right: -0px;" [src]="item.isSaveToggled ? '../../assets/Images/save-instagram - Copy.png' : '../../assets/Images/save-instagram.png'" (click)="toggleSave(item)">
                               </div>
                             </div>
                           </div>
@@ -144,6 +148,7 @@
             </div>  
           </div>
         </div>
+        <app-footer></app-footer>
     </section>
   </body>
 </html>

@@ -6,7 +6,7 @@ import 'firebase/auth'
 import 'firebase/firestore'
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { NgToastService } from 'ng-angular-popup';
-
+import { AuthService } from 'src/app/services/auth.service';
 
 //Connection with firebase
 var config = {
@@ -47,7 +47,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   //Constructor
-  constructor(private router: Router, private jwtHelper: JwtHelperService, private notification: NgToastService) {
+  constructor(private authService:AuthService,private router: Router, private jwtHelper: JwtHelperService, private notification: NgToastService) {
     this.loginForm.get('userPhoneF')?.valueChanges.subscribe(newValue => {
       if (this.loginForm.invalid) {
         this.isPhoneCorrect = false;
@@ -69,8 +69,11 @@ export class LoginPageComponent implements OnInit {
     this.setupPhoneInput();
     this.setupPhoneInput();
     this.applyPhoneNumberMask();
-
-    if(this.isTokenValid){
+    const token: string | null = localStorage.getItem('accessToken');
+    if (token !== null) {
+      this.authService.setToken(token);
+    }
+    if(!this.authService.isTokenExpired()){
       this.router.navigate(['/dashboardpage']);}
   
   }

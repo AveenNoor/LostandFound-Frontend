@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 import {Router} from '@angular/router';
 import { JwtserviceService } from 'src/app/services/jwtservice.service';
 import { Subscription } from 'rxjs';
@@ -18,13 +19,16 @@ export class DashboardPageComponent {
   isHeartToggled : boolean = false;
   isSaveToggled :boolean = false;
   term:any;
+  useObject :any={
+    name:'',
+    photoUrl:''
+  };
 
   //constructor
-  constructor(private router: Router,private jwtService: JwtserviceService, private apiCall:UserApiCallsService){
+  constructor(private location:Location,private router: Router,private jwtService: JwtserviceService, private apiCall:UserApiCallsService){
   }
 
   ngOnInit(): void {
-    //Code for subscribing to service to get username and ID from jwt token
     this.tokenSubscription = this.jwtService.getDecodedToken().subscribe(
       (tokenData) => {
         console.log(tokenData);
@@ -34,11 +38,16 @@ export class DashboardPageComponent {
         console.error('Error fetching token:', error);
       }
     );
+    this.getUserInfoAPICall();
+  }
 
-    //Get current users data
-    // this.apiCall.getUserAPICall().subscribe((response)=>{
-    //   console.log("user response data",response)
-    // })
+  //Get user information details 
+  getUserInfoAPICall():void{
+    this.apiCall.getUserAPICall().subscribe((response)=>{
+      console.log('UserInfo for dashboard is..',response);
+      this.useObject.name= response.name,
+      this.useObject.photoUrl= response.photoUrl
+    })
   }
 
   //Navigation Function

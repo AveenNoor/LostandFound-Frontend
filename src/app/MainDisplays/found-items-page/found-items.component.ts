@@ -17,6 +17,10 @@ export class FoundItemsComponent {
   tokenSubscription?: Subscription;
   myObject: any = {};
   item:any;
+  useObject :any={
+    name:'',
+    photoUrl:''
+  };
 
   //constructor
   constructor(private router: Router,private jwtService: JwtserviceService, private apiCall:UserApiCallsService, private apiCall1:ItemApiCallsService, private siblingComm:PostIdCommuicationService){
@@ -33,16 +37,19 @@ export class FoundItemsComponent {
       }
     );
     //Function to get current user data
-    this.getUserData();
+    this.getUserInfoAPICall();
     //Function to get all found items
     this.getFoundItems();
 
   }
 
   //Function to get current user data
-  getUserData():void{
+  //Get user information details 
+  getUserInfoAPICall():void{
     this.apiCall.getUserAPICall().subscribe((response)=>{
-      console.log("user response data",response)
+      console.log('UserInfo for dashboard is..',response);
+      this.useObject.name= response.name,
+      this.useObject.photoUrl= response.photoUrl
     })
   }
 
@@ -62,7 +69,8 @@ export class FoundItemsComponent {
               description: item.description,
               imageUrls: item.imageUrls.$values, // Extract imageUrls
               isHeartToggled: item.likedInfo,
-              isSaved:item.savedPostInfo
+              isSaved:item.savedPostInfo,
+              userImage:item.userProfileUrl
             };
           }),
         };
@@ -73,8 +81,7 @@ export class FoundItemsComponent {
       }
     );
   }
-
-
+  
   //Navigation Function
   goto(data:string){
     this.router.navigate([data]);

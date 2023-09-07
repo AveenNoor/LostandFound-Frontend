@@ -38,7 +38,8 @@ import { LostItemsComponent } from './MainDisplays/lost-items-page/lost-items.co
 import { PostIdCommuicationService } from './services/post-id-commuication.service';
 import { SaveditemsPageComponent } from './Posts/saveditems-page/saveditems-page.component';
 import { PopupcomponentComponent } from './popupcomponent/popupcomponent.component';
-import { SearchPipe } from './search.pipe';
+import { SearchPipe } from './Pipes/search.pipe';
+import { FooterComponent } from './MainDisplays/footer/footer.component';
 
 
 //Get JWT token from local storage
@@ -63,7 +64,8 @@ export function tokenGetter() {
     LostItemsComponent,
     SaveditemsPageComponent,
     PopupcomponentComponent,
-    SearchPipe
+    SearchPipe,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
