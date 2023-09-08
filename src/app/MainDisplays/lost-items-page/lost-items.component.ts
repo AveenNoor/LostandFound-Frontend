@@ -15,8 +15,6 @@ export class LostItemsComponent {
 
    //Properties
    tokenSubscription?: Subscription;
-   isHeartToggled : boolean = false;
-   isSaveToggled :boolean = false;
    myObject: any = {};
    useObject :any={
     name:'',
@@ -69,9 +67,9 @@ export class LostItemsComponent {
                description: item.description,
                imageUrls: item.imageUrls.$values, // Extract imageUrls
                isHeartToggled: item.likedInfo,
-              isSaved:item.savedPostInfo,
-              userImage:item.userProfileUrl
-             };
+                isSaved:item.savedPostInfo,
+                userImage:item.userProfileUrl
+              };
            }),
          };
          console.log("myObject:", this.myObject);

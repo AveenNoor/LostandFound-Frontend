@@ -4,6 +4,7 @@ import { FormControl,FormGroup,Validators,FormArray } from '@angular/forms';
 import { JwtserviceService } from 'src/app/services/jwtservice.service';
 import { Subscription } from 'rxjs';
 import { UserApiCallsService } from 'src/app/services/user-api-calls.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-edit-profile-page',
@@ -52,7 +53,7 @@ export class EditProfilePageComponent implements OnInit {
   }
 
   //Constructor
-  constructor(private router:Router,private el: ElementRef,private jwtService: JwtserviceService, private apiCall:UserApiCallsService){
+  constructor(private notification: NgToastService,private router:Router,private el: ElementRef,private jwtService: JwtserviceService, private apiCall:UserApiCallsService){
     this.tokenSubscription = this.jwtService.getDecodedToken().subscribe(
       (tokenData) => {console.log(tokenData);
       },
@@ -64,8 +65,7 @@ export class EditProfilePageComponent implements OnInit {
   
   //Initializa function
   ngOnInit(): void {
-    //Code for subscribing to service to get username and ID from jwt token
-      
+    //Code for subscribing to service to get username and ID from jwt token  
     //Get current users profile data
     this.getInitialuserData();
     this.getUserInfoAPICall();
@@ -166,9 +166,11 @@ export class EditProfilePageComponent implements OnInit {
     const formData = this.getFormDataFromForm();
     this.apiCall.updateUserAPICall(formData).subscribe(
       (response) => {
+        this.notification.success({ detail: 'SUCCESS', summary: 'Profile Updated Successfully', position: 'topCenter' });
         console.log('Profile updated:', response);
       },
       (error) => {
+        this.notification.success({ detail: 'SUCCESS', summary: 'Error Updating Profile', position: 'topCenter' });
         console.error('Error updating profile:', error);
       }
     );

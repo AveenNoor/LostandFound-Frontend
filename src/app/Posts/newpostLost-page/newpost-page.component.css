@@ -60,8 +60,8 @@ body, html {
   }
   
   .circular-image {
-    width: 100%; /* Make the image fill the circular container */
-    height: 100%; /* Make the image fill the circular container */
+    width: 50px; /* Make the image fill the circular container */
+    height: 50px; /* Make the image fill the circular container */
     object-fit: cover; /* Maintain aspect ratio and cover the circular area */
   }
   

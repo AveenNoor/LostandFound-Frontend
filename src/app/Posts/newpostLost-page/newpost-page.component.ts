@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { GetMyLocationService } from '../../services/get-my-location.service';
 import { UserApiCallsService } from 'src/app/services/user-api-calls.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-newpost-page',
@@ -79,7 +80,7 @@ export class NewpostPageComponent implements OnInit {
   }
 
   // Constructor
-  constructor(private router: Router, private locationService:GetMyLocationService,private apiCall:UserApiCallsService) {}
+  constructor(private notification: NgToastService,private router: Router, private locationService:GetMyLocationService,private apiCall:UserApiCallsService) {}
 
   // OnInit function
   ngOnInit(): void {
@@ -153,11 +154,16 @@ export class NewpostPageComponent implements OnInit {
 
   //Converting form to formdata
   getFormDataFromForm() {
+    const latitude = this.markerPostion.lat.toString(); 
+    const longitude = this.markerPostion.lng.toString(); 
     const formData = new FormData();
     formData.append('Name', this.postNameF?.value);
     formData.append('Description', this.postDescriptionF?.value);
     formData.append('Type', this.postKindF?.value);
+    formData.append('Category',this.postTypeF?.value),
     formData.append('Color', this.postColorF?.value);
+    formData.append('latitude',latitude),
+    formData.append('longitude',longitude)
     for (const img of this.postImagesF.value) {
       const blob = this.dataURItoBlob(img);
       formData.append('ImageFiles', blob, 'image.png'); // Change 'image.png' to appropriate filenames
@@ -178,10 +184,22 @@ export class NewpostPageComponent implements OnInit {
   }
 
   //On submitting fomr
-  onSubmission():void{
-    this.apiCall.postUserAPICall(this.getFormDataFromForm()).subscribe((response)=>{
-      console.log("New post created...",response)
-    });  
+  onSubmission(): void {
+    this.apiCall.postUserAPICall(this.getFormDataFromForm()).subscribe(
+      (response) => {
+        // Handle success
+        this.notification.success({ detail: 'SUCCESS', summary: 'Post Created Successfully', position: 'topCenter' });
+        console.log("New post created...", response);
+      },
+      (error) => {
+        // Handle error
+        console.error("Error creating post:", error);
+  
+        // You can also show an error notification or perform any other error handling logic here.
+        this.notification.error({ detail: 'ERROR', summary: 'Error Creating Post', position: 'topCenter' });
+      }
+    );
   }
+  
 
 }
