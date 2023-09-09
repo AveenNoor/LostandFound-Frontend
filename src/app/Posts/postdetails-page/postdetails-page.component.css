@@ -47,9 +47,9 @@ body {
     cursor: pointer; /* Add a pointer cursor for interaction */
   }
   
-  .circular-image {
-    width: 100%; /* Make the image fill the circular container */
-    height: 100%; /* Make the image fill the circular container */
+  .circular-image1 {
+    width: 50px; /* Make the image fill the circular container */
+    height: 50px; /* Make the image fill the circular container */
     object-fit: cover; /* Maintain aspect ratio and cover the circular area */
   }
   

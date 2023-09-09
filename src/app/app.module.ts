@@ -15,8 +15,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { JwtModule} from '@auth0/angular-jwt';
 import { NgToastModule } from 'ng-angular-popup';
 import { MatDialogModule } from '@angular/material/dialog';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
+import { MatIconModule } from '@angular/material/icon';
+import {MatBadgeModule} from '@angular/material/badge';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 //Components
@@ -40,6 +40,7 @@ import { SaveditemsPageComponent } from './Posts/saveditems-page/saveditems-page
 import { PopupcomponentComponent } from './popupcomponent/popupcomponent.component';
 import { SearchPipe } from './Pipes/search.pipe';
 import { FooterComponent } from './MainDisplays/footer/footer.component';
+import { NotificationsComponent } from './MainDisplays/notifications/notifications.component';
 
 
 //Get JWT token from local storage
@@ -65,7 +66,8 @@ export function tokenGetter() {
     SaveditemsPageComponent,
     PopupcomponentComponent,
     SearchPipe,
-    FooterComponent
+    FooterComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,
@@ -78,6 +80,8 @@ export function tokenGetter() {
     NgxMaskModule.forRoot(),
     BrowserAnimationsModule,
     MatGridListModule,
+    MatBadgeModule,
+    MatIconModule,
     GoogleMapsModule,
     NgbModule,
     NgToastModule,

@@ -1,0 +1,16 @@
+<body>
+    <mat-dialog-content>
+        <div class="grid-item" *ngFor="let item of imageData">
+            <div class="my-posts" (click)="viewPostDeatils('/postdetailspage',item.id);closeNotifications()">
+                <div class="circular-conatiner">
+                    <img [src]="item.imageUrl" alt="Item Image">
+                </div>
+                <div class="content"><p>Match for your item "{{item.name}}" has been found. Click to view post details.</p></div>
+            </div>
+        </div>   
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button class="loginbtn" matDialogClose>Close</button>
+    </mat-dialog-actions>
+</body>
+

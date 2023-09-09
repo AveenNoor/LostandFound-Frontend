@@ -4,6 +4,8 @@ import {Router} from '@angular/router';
 import { JwtserviceService } from 'src/app/services/jwtservice.service';
 import { Subscription } from 'rxjs';
 import { UserApiCallsService } from 'src/app/services/user-api-calls.service';
+import { MatDialog} from '@angular/material/dialog';
+import { NotificationsComponent } from '../notifications/notifications.component';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -19,13 +21,15 @@ export class DashboardPageComponent {
   isHeartToggled : boolean = false;
   isSaveToggled :boolean = false;
   term:any;
+  count:number=0;
+  imageData:any;
   useObject :any={
     name:'',
     photoUrl:''
   };
 
   //constructor
-  constructor(private location:Location,private router: Router,private jwtService: JwtserviceService, private apiCall:UserApiCallsService){
+  constructor(private dialog:MatDialog,private router: Router,private jwtService: JwtserviceService, private apiCall:UserApiCallsService){
   }
 
   ngOnInit(): void {
@@ -39,7 +43,27 @@ export class DashboardPageComponent {
       }
     );
     this.getUserInfoAPICall();
+    this.totalNotifications();
   }
+
+  //Total user notifications
+  totalNotifications(): void {
+    this.apiCall.getUserItems().subscribe(
+      (response: any) => {
+        // Extract the items that are in the values array from the response
+        const itemsArray = response.$values; // Assuming $values contains the items
+        // Filter items where the match array is not empty
+        this.imageData = itemsArray.filter((item: any) => item.matches && item.matches.$values && item.matches.$values.length > 0);
+        // Calculate the count of items with non-empty match arrays
+        this.count = this.imageData.length;
+        console.log('Total notifications:', this.count);
+      },
+      (error) => {
+        console.error('Error fetching items:', error);
+      }
+    );
+  }
+  
 
   //Get user information details 
   getUserInfoAPICall():void{
@@ -47,6 +71,12 @@ export class DashboardPageComponent {
       console.log('UserInfo for dashboard is..',response);
       this.useObject.name= response.name,
       this.useObject.photoUrl= response.photoUrl
+    })
+  }
+
+  openNotifications(){
+    this.dialog.open(NotificationsComponent,{
+      width:'500px',
     })
   }
 
