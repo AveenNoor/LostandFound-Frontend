@@ -37,11 +37,11 @@ import { FoundItemsComponent } from './MainDisplays/found-items-page/found-items
 import { LostItemsComponent } from './MainDisplays/lost-items-page/lost-items.component';
 import { PostIdCommuicationService } from './services/post-id-commuication.service';
 import { SaveditemsPageComponent } from './Posts/saveditems-page/saveditems-page.component';
-import { PopupcomponentComponent } from './popupcomponent/popupcomponent.component';
-import { SearchPipe } from './Pipes/search.pipe';
-import { FooterComponent } from './MainDisplays/footer/footer.component';
-import { NotificationsComponent } from './MainDisplays/notifications/notifications.component';
-
+import { PopupcomponentComponent } from './ReusableComponents/popupcomponent/popupcomponent.component';
+import { SearchPipe } from './ReusableComponents/Pipes/search.pipe';
+import { FooterComponent } from './ReusableComponents/footer/footer.component';
+import { NotificationsComponent } from './ReusableComponents/notifications/notifications.component';
+import { HeaderComponent } from './ReusableComponents/header/header.component';
 
 //Get JWT token from local storage
 export function tokenGetter() {
@@ -67,7 +67,8 @@ export function tokenGetter() {
     PopupcomponentComponent,
     SearchPipe,
     FooterComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

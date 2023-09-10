@@ -25,6 +25,7 @@ export class NotificationsComponent implements OnInit {
   ngOnInit(): void {
     this.apiCall.getUserItems().subscribe(
       (response: any) => {
+        console.log('user Item response...',response);
         // Extract the items that are in the values array from the response
         const itemsArray = response.$values; // Assuming $values contains the items
         // Filter items where the match array is not empty

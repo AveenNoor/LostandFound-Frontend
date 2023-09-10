@@ -15,10 +15,6 @@ export class MyprofilepageComponent implements OnInit {
   //Properties
   tokenSubscription?: Subscription;
   myObject: any = {};
-  useObject :any={
-    name:'',
-    photoUrl:''
-  };
 
   //Constructor
   constructor(private router: Router,private jwtService: JwtserviceService, private apiCall:UserApiCallsService){
@@ -56,18 +52,6 @@ export class MyprofilepageComponent implements OnInit {
         console.error('Error fetching user data:', error);
       }
     );
-
-    this.getUserInfoAPICall();
-  }
-
-  //Function to get current user data
-  //Get user information details 
-  getUserInfoAPICall():void{
-    this.apiCall.getUserAPICall().subscribe((response)=>{
-      console.log('UserInfo for dashboard is..',response);
-      this.useObject.name= response.name,
-      this.useObject.photoUrl= response.photoUrl
-    })
   }
 
   //Navigation Function

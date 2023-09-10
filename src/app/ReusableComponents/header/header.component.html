@@ -1,0 +1,26 @@
+<div class="header-flexbox">
+    <div class="logoimg">
+      <img src="../../assets/Images/Group 2.png" />
+    </div>
+    <div class="items-flexbox">
+      <div class="notification-icon">
+        <!-- <mat-dialog-actions> -->
+          <img matBadge="5" (click)="openNotifications()" src="../../assets/Images/icons8-bell-50.png"/>
+          <span matBadge="{{count}}"></span>              
+        <!-- </mat-dialog-actions> -->
+      </div>
+      <div class="logout-icon">
+        <img (click)="goto('')"  src="../../assets/Images/icons8-logout-50 (1).png" />
+      </div>
+      
+      <div class="image-username-flex">
+        <div class="circular-image-container" (click)="goto('/myprofilepage')">
+          <img src="{{ useObject.photoUrl }}" alt="User Profile Image" class="circular-image">
+        </div>              
+        <div class="heading-block">             
+            <h6>{{useObject.name}}</h6>
+          <p>@username</p>
+        </div>
+      </div>
+    </div>
+  </div>

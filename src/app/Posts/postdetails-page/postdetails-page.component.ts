@@ -4,6 +4,8 @@ import { ItemApiCallsService } from 'src/app/services/item-api-calls.service';
 import { GetMyLocationService } from '../../services/get-my-location.service';
 import { Router } from '@angular/router';
 import { UserApiCallsService } from 'src/app/services/user-api-calls.service';
+import { concatMapTo } from 'rxjs';
+
 
 @Component({
   selector: 'app-postdetails-page',
@@ -27,10 +29,7 @@ export class PostdetailsPageComponent implements OnInit {
     type: 'Not mentioned',
     imageUrls: { $values: ['https://exceedinternal.azurewebsites.net//images/461fafff-aa19-4842-af9d-31133283abb7.jpg'] }, // Provide a default image URL
   };
-  useObject :any={
-    name:'',
-    photoUrl:''
-  };
+
   myTags: string[] = [];
   position = { lat: 33.7119, lng: 73.0578 };
   markerPostion = { lat: 33.7077, lng: 73.0498 };
@@ -38,7 +37,7 @@ export class PostdetailsPageComponent implements OnInit {
   observableData = '';
 
   // Constructor
-  constructor(private apiCall:UserApiCallsService,private postIdService: PostIdCommuicationService, private cdr: ChangeDetectorRef, private apiCall1: ItemApiCallsService, private locationService: GetMyLocationService,private router:Router) {
+  constructor(private siblingComm:PostIdCommuicationService,private postIdService: PostIdCommuicationService, private cdr: ChangeDetectorRef, private apiCall1: ItemApiCallsService, private locationService: GetMyLocationService,private router:Router) {
   }
 
   // On initialize function
@@ -52,17 +51,6 @@ export class PostdetailsPageComponent implements OnInit {
     this.getItemData(parseInt(this.observableData, 10)); // The second argument is the radix (base)
     this.getItemTags();
     this.markerPostion = this.position;
-    this.getUserInfoAPICall();
-  }
-
-    //Function to get current user data
-  //Get user information details 
-  getUserInfoAPICall():void{
-    this.apiCall.getUserAPICall().subscribe((response)=>{
-      console.log('UserInfo for dashboard is..',response);
-      this.useObject.name= response.name,
-      this.useObject.photoUrl= response.photoUrl
-    })
   }
 
   // API Call to get tags generated for this post by AI
@@ -90,6 +78,8 @@ export class PostdetailsPageComponent implements OnInit {
       this.apiCall1.getItemsByIDCall(data).subscribe(
         (response: any) => {
           console.log('Item Details are:', response);
+          // Extract matches data
+          const matchesData = response.matches || [];
           this.myObject = {
             $id: response.$id,
             color: response.color || this.myObject.color,
@@ -102,7 +92,9 @@ export class PostdetailsPageComponent implements OnInit {
             name: response.name || this.myObject.name,
             username: response.username || this.myObject.username,
             type: response.type || this.myObject.type,
-            imageUrls: response.imageUrls || this.myObject.imageUrls,
+            imageUrls: response.imageUrls || this.myObject.imageUrls,       
+            // Add matches data to myObject
+            matches: matchesData
           };
           if ((this.myObject.latitude != null) && (this.myObject.longitude != null)) {
             this.markerPostion = {
@@ -123,6 +115,15 @@ export class PostdetailsPageComponent implements OnInit {
         }
       );
     });
+  }
+
+  //Send itemID to sibling postdetailspage and then navigate to it
+  viewPostDeatils(data:string,id:number):void {
+    //Sending post ID to service
+    const ID =id.toString()
+    this.siblingComm.sendpostID(ID);
+    console.log('Sent data:',ID);
+    this.router.navigate([data]);
   }
 
   //Navigation Function

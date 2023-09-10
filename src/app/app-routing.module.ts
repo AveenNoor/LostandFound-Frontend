@@ -15,8 +15,8 @@ import { PostdetailsPageComponent } from './Posts/postdetails-page/postdetails-p
 import { FoundItemsComponent } from './MainDisplays/found-items-page/found-items.component';
 import { LostItemsComponent } from './MainDisplays/lost-items-page/lost-items.component';
 import { SaveditemsPageComponent } from './Posts/saveditems-page/saveditems-page.component';
-import { FooterComponent } from './MainDisplays/footer/footer.component';
-import { NotificationsComponent } from './MainDisplays/notifications/notifications.component';
+import { FooterComponent } from './ReusableComponents/footer/footer.component';
+import { NotificationsComponent } from './ReusableComponents/notifications/notifications.component';
 
 const routes: Routes = [
   {path:'',component: LoginPageComponent},

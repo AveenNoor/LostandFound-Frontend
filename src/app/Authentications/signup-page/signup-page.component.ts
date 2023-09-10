@@ -4,12 +4,11 @@ import {FormGroup, FormControl,Validators} from '@angular/forms';
 import firebase from 'firebase/compat/app';
 import 'firebase/auth'
 import { NgToastService } from 'ng-angular-popup';
-
-
-
 import { MatDialog } from '@angular/material/dialog';
-import { PopupcomponentComponent } from 'src/app/popupcomponent/popupcomponent.component';
+import { PopupcomponentComponent } from 'src/app/ReusableComponents/popupcomponent/popupcomponent.component';
 import 'firebase/compat/firestore';
+
+
 var config = {
   apiKey: "AIzaSyAldpHN1RWE9Vv_4UdY6AwYPlr6ltOZ_ec",
   authDomain: "lostandfound2-e3e9e.firebaseapp.com",

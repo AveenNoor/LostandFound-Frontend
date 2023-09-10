@@ -17,10 +17,6 @@ export class SaveditemsPageComponent {
   tokenSubscription?: Subscription;
   myItemsdata : any[] =[];
   imageData: any[] =[];
-  useObject :any={
-    name:'',
-    photoUrl:''
-  };
 
   //Constructor
    constructor(private router: Router,private jwtService: JwtserviceService, private apiCall:UserApiCallsService,private apiCall1:ItemApiCallsService,private siblingComm:PostIdCommuicationService){
@@ -36,7 +32,6 @@ export class SaveditemsPageComponent {
         console.error('Error fetching token:', error);
       }
     );
-    this.getUserInfoAPICall();
     //Get current users data
     this.apiCall1.getAllSavedPostsAPICall().subscribe((response: any) => {
       // Extract the items thats is the values array from the response
@@ -52,16 +47,6 @@ export class SaveditemsPageComponent {
     (error) => {
       console.error('Error fetching items:', error);
     });
-  }
-
-  //Function to get current user data
-  //Get user information details 
-  getUserInfoAPICall():void{
-    this.apiCall.getUserAPICall().subscribe((response)=>{
-      console.log('UserInfo for dashboard is..',response);
-      this.useObject.name= response.name,
-      this.useObject.photoUrl= response.photoUrl
-    })
   }
 
   //Send itemID to sibling postdetailspage and then navigate to it

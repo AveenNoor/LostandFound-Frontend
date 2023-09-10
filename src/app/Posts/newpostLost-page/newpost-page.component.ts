@@ -19,10 +19,6 @@ export class NewpostPageComponent implements OnInit {
   markerPostion ={lat:33.7077,lng:73.0498};
   label={color:'black',text:'Marker'};
   formType : string = '';
-  useObject :any={
-    name:'',
-    photoUrl:''
-  };
 
   // New post form
   createPost: FormGroup = new FormGroup({
@@ -86,18 +82,6 @@ export class NewpostPageComponent implements OnInit {
   ngOnInit(): void {
     this.getLocation();
     this.markerPostion=this.position;
-    //Function to get current user data
-    this.getUserInfoAPICall();
-  }
-
-  //Function to get current user data
-  //Get user information details 
-  getUserInfoAPICall():void{
-    this.apiCall.getUserAPICall().subscribe((response)=>{
-      console.log('UserInfo for dashboard is..',response);
-      this.useObject.name= response.name,
-      this.useObject.photoUrl= response.photoUrl
-    })
   }
 
    //Navigation Function
@@ -194,7 +178,6 @@ export class NewpostPageComponent implements OnInit {
       (error) => {
         // Handle error
         console.error("Error creating post:", error);
-  
         // You can also show an error notification or perform any other error handling logic here.
         this.notification.error({ detail: 'ERROR', summary: 'Error Creating Post', position: 'topCenter' });
       }

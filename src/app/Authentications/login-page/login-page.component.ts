@@ -83,13 +83,6 @@ export class LoginPageComponent implements OnInit {
     this.router.navigate(['signupPage']);
   }
 
-  //Checking whether the user credentials that have been entered exist and are correct or not
-  validateLogin(): void {
-
-
-    console.log('Validating login...');
-  }
-
   //Alert Messages
   onInputChange(control: FormControl) {
     if (control.invalid && control.touched) {

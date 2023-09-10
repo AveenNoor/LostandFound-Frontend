@@ -67,4 +67,10 @@ export class ItemApiCallsService {
     const url = `${'https://exceedinternal.azurewebsites.net/api/Tag/get-tags/'}${itemId}`;
     return this.http.get<any>(url);
   }
+
+  //Get an items matches made by AI
+  getItemsMatches(itemId:number){
+    const url = `${'https://exceedinternal.azurewebsites.net/api/Items/'}${itemId}`;
+    return this.http.get<any>(url);
+  }
 }

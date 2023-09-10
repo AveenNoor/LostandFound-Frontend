@@ -17,10 +17,6 @@ export class EditProfilePageComponent implements OnInit {
   previewImageUrl: string = 'https://exceedinternal.azurewebsites.net/dummy/461fafff-aa19-4842-af9d-31133283abb7.jpg'; // Default preview image
   tokenSubscription?: Subscription;
   myObject: any = {};
-  useObject :any={
-    name:'',
-    photoUrl:''
-  };
 
   //EditProfForm
   editProfForm : FormGroup = new FormGroup ({
@@ -68,17 +64,6 @@ export class EditProfilePageComponent implements OnInit {
     //Code for subscribing to service to get username and ID from jwt token  
     //Get current users profile data
     this.getInitialuserData();
-    this.getUserInfoAPICall();
-  }
-
-  //Function to get current user data
-  //Get user information details 
-  getUserInfoAPICall():void{
-    this.apiCall.getUserAPICall().subscribe((response)=>{
-      console.log('UserInfo for dashboard is..',response);
-      this.useObject.name= response.name,
-      this.useObject.photoUrl= response.photoUrl
-    })
   }
 
   getInitialuserData(): void {
@@ -175,6 +160,5 @@ export class EditProfilePageComponent implements OnInit {
       }
     );
   }
-
 
 }

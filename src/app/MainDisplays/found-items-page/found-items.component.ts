@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 import { JwtserviceService } from 'src/app/services/jwtservice.service';
 import { Subscription } from 'rxjs';
-import { UserApiCallsService } from 'src/app/services/user-api-calls.service';
 import { ItemApiCallsService } from 'src/app/services/item-api-calls.service';
 import { PostIdCommuicationService } from 'src/app/services/post-id-commuication.service';
 
@@ -23,7 +22,7 @@ export class FoundItemsComponent {
   };
 
   //constructor
-  constructor(private router: Router,private jwtService: JwtserviceService, private apiCall:UserApiCallsService, private apiCall1:ItemApiCallsService, private siblingComm:PostIdCommuicationService){
+  constructor(private router: Router,private jwtService: JwtserviceService,  private apiCall1:ItemApiCallsService, private siblingComm:PostIdCommuicationService){
   }
 
   ngOnInit(): void {
@@ -36,21 +35,8 @@ export class FoundItemsComponent {
         console.error('Error fetching token:', error);
       }
     );
-    //Function to get current user data
-    this.getUserInfoAPICall();
     //Function to get all found items
     this.getFoundItems();
-
-  }
-
-  //Function to get current user data
-  //Get user information details 
-  getUserInfoAPICall():void{
-    this.apiCall.getUserAPICall().subscribe((response)=>{
-      console.log('UserInfo for dashboard is..',response);
-      this.useObject.name= response.name,
-      this.useObject.photoUrl= response.photoUrl
-    })
   }
 
   //Function to get all found items

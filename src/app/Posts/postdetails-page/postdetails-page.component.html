@@ -8,28 +8,7 @@
   <body>
     <section class="lostandfound-homepage">
       <div class="header-container">
-        <div class="header-flexbox">
-          <div class="logoimg">
-            <img src="../../assets/Images/Group 2.png" />
-          </div>
-          <div class="items-flexbox">
-            <div class="notification-icon">
-              <img src="../../assets/Images/icons8-bell-50.png" />
-            </div>
-            <div class="logout-icon">
-              <img src="../../assets/Images/icons8-logout-50 (1).png" />
-            </div>
-            <div class="image-username-flex">
-              <div class="circular-image-container" (click)="goto('/myprofilepage')">
-                <img src="{{ useObject.photoUrl }}" alt="User Profile Image" class="circular-image1">
-              </div>
-              <div class="heading-block">             
-                  <h6>{{useObject.name}}</h6>
-                <p>@username</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <app-header></app-header>
       </div>
       <div class="inner-content-container">
         <div class="side-container">
@@ -55,8 +34,8 @@
                 <p (click)="goto('/myprofilepage')">My Profile</p>
               </div>
               <div class="navigation-link">
-                <img (click)="goto('/saveditemspage')" src="../../assets/Images/icons8-pin-50.png" />
-                <p>Saved</p>
+                <img  src="../../assets/Images/icons8-pin-50.png" />
+                <p (click)="goto('/saveditemspage')">Saved</p>
               </div>
           </div>
         </div>
@@ -130,11 +109,12 @@
                       </div>
                       <div class="row">
                         <div class="heading4-matches">Matched Items:</div>
-                        <div class="image-list">
-                          <div *ngFor="let image of images" class="circular-image">
-                            <img [src]="image" alt="Image">
+                        <div class="image-list" *ngIf="myObject.matches.length > 0">
+                          <div *ngFor="let image of myObject.matches" class="circular-image">
+                            <img (click)="viewPostDeatils('/postdetailspage', image.matchedItemId)" [src]="image" alt="Image">
                           </div>
                         </div>
+                        <div *ngIf="myObject.matches.length === 0">Text None</div>                        
                       </div>
                       <div class="row">
                         <label class="heading6-location"> <p class="description-fixed">Location:</p> <p class="description">{{myObject.latitude}} , {{myObject.longitude}}</p></label>

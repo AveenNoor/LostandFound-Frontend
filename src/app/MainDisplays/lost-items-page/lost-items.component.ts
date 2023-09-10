@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 import { JwtserviceService } from 'src/app/services/jwtservice.service';
 import { Subscription } from 'rxjs';
-import { UserApiCallsService } from 'src/app/services/user-api-calls.service';
 import { ItemApiCallsService } from 'src/app/services/item-api-calls.service';
 import { PostIdCommuicationService } from 'src/app/services/post-id-commuication.service';
 
@@ -16,14 +15,10 @@ export class LostItemsComponent {
    //Properties
    tokenSubscription?: Subscription;
    myObject: any = {};
-   useObject :any={
-    name:'',
-    photoUrl:''
-  };
    item: any;
  
    //constructor
-   constructor(private router: Router,private jwtService: JwtserviceService, private apiCall:UserApiCallsService, private apiCall1:ItemApiCallsService, private siblingComm:PostIdCommuicationService){
+   constructor(private router: Router,private jwtService: JwtserviceService, private apiCall1:ItemApiCallsService, private siblingComm:PostIdCommuicationService){
    }
  
    ngOnInit(): void {
@@ -36,21 +31,10 @@ export class LostItemsComponent {
          console.error('Error fetching token:', error);
        }
      );
-     //Function to get current user data
-     this.getUserInfoAPICall();
      //Function to get all found items
      this.getLostItems();
    }
- 
-   //Function to get current user data
-  //Get user information details 
-  getUserInfoAPICall():void{
-    this.apiCall.getUserAPICall().subscribe((response)=>{
-      console.log('UserInfo for dashboard is..',response);
-      this.useObject.name= response.name,
-      this.useObject.photoUrl= response.photoUrl
-    })
-  }
+
    //Function to get all found items
    getLostItems(): void {
      this.apiCall1.getLostItemsAPICall().subscribe(
@@ -80,21 +64,21 @@ export class LostItemsComponent {
      );
    }
  
-   //Navigation Function
-   goto(data:string){
+  //Navigation Function
+  goto(data:string){
      this.router.navigate([data]);
    }
  
-   //Send itemID to sibling postdetailspage and then navigate to it
-   viewPostDeatils(data:string,id:number):void {
-     //Sending post ID to service
-     const ID =id.toString()
-     this.siblingComm.sendpostID(ID);
-     console.log('Sent data:',ID);
-     this.router.navigate([data]);
-   }
+  //Send itemID to sibling postdetailspage and then navigate to it
+  viewPostDeatils(data:string,id:number):void {
+    //Sending post ID to service
+    const ID =id.toString()
+    this.siblingComm.sendpostID(ID);
+    console.log('Sent data:',ID);
+    this.router.navigate([data]);
+  }
  
-    //Toggle heart
+  //Toggle heart
   toggleHeart(item: any): void {
     item.isHeartToggled = !item.isHeartToggled;
     if(item.isHeartToggled==true){
